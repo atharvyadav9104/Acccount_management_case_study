@@ -1,0 +1,452 @@
+SQL> select roundv(balance,0) as rounded_balance
+  2  from accounts;
+select roundv(balance,0) as rounded_balance
+       *
+ERROR at line 1:
+ORA-00904: "ROUNDV": invalid identifier 
+
+
+SQL> select round(balance,0) as rounded_balance
+  2  from accounts;
+
+ROUNDED_BALANCE                                                                 
+---------------                                                                 
+           1500                                                                 
+           2000                                                                 
+           2500                                                                 
+           3000                                                                 
+           5000                                                                 
+
+SQL> select extract( year from tdate) as transaction_year
+  2  from transactions;
+
+TRANSACTION_YEAR                                                                
+----------------                                                                
+            2021                                                                
+            2022                                                                
+            2023                                                                
+            2024                                                                
+            2025                                                                
+
+SQL> select to_char(balance) as balance_string from accounts;
+
+BALANCE_STRING                                                                  
+----------------------------------------                                        
+1500                                                                            
+2000                                                                            
+2500                                                                            
+3000                                                                            
+5000                                                                            
+
+SQL> select email,
+  2  case
+  3  when email like '%@%.%' then'valid'
+  4  else 'invalid'
+  5  end as email_validation
+  6  from customers;
+
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+EMAIL_V                                                                         
+-------                                                                         
+av12@gmail,com                                                                  
+invalid                                                                         
+                                                                                
+sg@gmail,com                                                                    
+invalid                                                                         
+                                                                                
+ak@gmail,com                                                                    
+invalid                                                                         
+                                                                                
+
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+EMAIL_V                                                                         
+-------                                                                         
+hm@gmail,com                                                                    
+invalid                                                                         
+                                                                                
+ad@gmail,com                                                                    
+invalid                                                                         
+                                                                                
+
+SQL> set pagesize 200;
+SQL> set linesize 200;
+SQL> /
+
+EMAIL                                                                                                EMAIL_V                                                                                            
+---------------------------------------------------------------------------------------------------- -------                                                                                            
+av12@gmail,com                                                                                       invalid                                                                                            
+sg@gmail,com                                                                                         invalid                                                                                            
+ak@gmail,com                                                                                         invalid                                                                                            
+hm@gmail,com                                                                                         invalid                                                                                            
+ad@gmail,com                                                                                         invalid                                                                                            
+
+SQL> select extract(name) as Customer_name from customers;
+select extract(name) as Customer_name from customers
+       *
+ERROR at line 1:
+ORA-00938: not enough arguments for function 
+
+
+SQL> select substr(name,1,instr(name,'')-1) as first_name from customers;
+
+FIRST_NAME                                                                                                                                                                                              
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+SQL> select substr(phone,4) as last_4_digits from customers;
+
+LAST_4_DIGITS                                                                                                                                                                                           
+------------------------------------------------                                                                                                                                                        
+4561230                                                                                                                                                                                                 
+4561230                                                                                                                                                                                                 
+4789846                                                                                                                                                                                                 
+4658944                                                                                                                                                                                                 
+5665859                                                                                                                                                                                                 
+
+SQL> select substr(phone,-4) as last_4_digits from customers;
+
+LAST_4_DIGITS                                                                                                                                                                                           
+----------------                                                                                                                                                                                        
+1230                                                                                                                                                                                                    
+1230                                                                                                                                                                                                    
+9846                                                                                                                                                                                                    
+8944                                                                                                                                                                                                    
+5859                                                                                                                                                                                                    
+
+SQL> select to_char(tdate,'mm-yyyy') as month_year from transactions;
+
+MONTH_Y                                                                                                                                                                                                 
+-------                                                                                                                                                                                                 
+01-2021                                                                                                                                                                                                 
+01-2022                                                                                                                                                                                                 
+01-2023                                                                                                                                                                                                 
+01-2024                                                                                                                                                                                                 
+01-2025                                                                                                                                                                                                 
+
+SQL> select coalesce(balance,0) as adjusted_balance from accounts;
+
+ADJUSTED_BALANCE                                                                                                                                                                                        
+----------------                                                                                                                                                                                        
+            1500                                                                                                                                                                                        
+            2000                                                                                                                                                                                        
+            2500                                                                                                                                                                                        
+            3000                                                                                                                                                                                        
+            5000                                                                                                                                                                                        
+
+SQL> select concat('type:',Account_type) as prefxied_account_type from accounts;
+
+PREFXIED_ACCOUNT_TYPE                                                                                                                                                                                   
+-------------------------                                                                                                                                                                               
+type:current                                                                                                                                                                                            
+type:current                                                                                                                                                                                            
+type:saving                                                                                                                                                                                             
+type:saving                                                                                                                                                                                             
+type:saving                                                                                                                                                                                             
+
+SQL> select coalesce(email,'not provided') as email_stastus from customers;
+
+EMAIL_STASTUS                                                                                                                                                                                           
+----------------------------------------------------------------------------------------------------                                                                                                    
+av12@gmail,com                                                                                                                                                                                          
+sg@gmail,com                                                                                                                                                                                            
+ak@gmail,com                                                                                                                                                                                            
+hm@gmail,com                                                                                                                                                                                            
+ad@gmail,com                                                                                                                                                                                            
+
+SQL> select upper(substr(name,1,1)) ||'_'|| upper(substr(name,instr(name,'')+1,1)) as initials from customers;
+
+INITIALS                                                                                                                                                                                                
+---------                                                                                                                                                                                               
+A_                                                                                                                                                                                                      
+S_                                                                                                                                                                                                      
+A_                                                                                                                                                                                                      
+H_                                                                                                                                                                                                      
+A_                                                                                                                                                                                                      
+
+SQL> select '('|| substr(phone,1,3'
+  2  )' || substr(phone,4,3)||'-' || substr(phone,7,4) as fomrateed_phone from customers;
+select '('|| substr(phone,1,3'
+                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select '('|| substr(phone,1,3' )' || substr(phone,4,3)||'-' || substr(phone,7,4) as fomrateed_phone from customers;
+select '('|| substr(phone,1,3' )' || substr(phone,4,3)||'-' || substr(phone,7,4) as fomrateed_phone from customers
+                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select '('|| substr(phone,1,3) ||')'|| substr(phone,4,3)||'-' || substr(phone,7,4) as fomrateed_phone from customers;
+
+FOMRATEED_PHONE                                                                                                                                                                                         
+-------------------------------------------                                                                                                                                                             
+(789)456-1230                                                                                                                                                                                           
+(789)456-1230                                                                                                                                                                                           
+(525)478-9846                                                                                                                                                                                           
+(758)465-8944                                                                                                                                                                                           
+(445)566-5859                                                                                                                                                                                           
+
+SQL> select upper(transaction_type) as uppercase_trnasacdtion_type from trnasactions;
+select upper(transaction_type) as uppercase_trnasacdtion_type from trnasactions
+                                                                   *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select upper(transaction_type) as uppercase_trnasaction_type from trnasactions;
+select upper(transaction_type) as uppercase_trnasaction_type from trnasactions
+                                                                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select upper(transaction_type) as uppercase_transaction_type from trnasactions;
+select upper(transaction_type) as uppercase_transaction_type from trnasactions
+                                                                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select upper(transaction_type) as uppercase_transaction_type from transactions;
+
+UPPERCASE_TRANSACTIO                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+DEPOSIT                                                                                                                                                                                                 
+DEPOSIT                                                                                                                                                                                                 
+DEPOSIT                                                                                                                                                                                                 
+DEPOSIT                                                                                                                                                                                                 
+DEPOSIT                                                                                                                                                                                                 
+
+SQL> select customer_id, name from customers where phone is null;
+
+no rows selected
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+SQL> select To_CHAR(tdate,'dd-mm-yyyy') as transaction_date_text from transactions;
+
+TRANSACTIO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+01-01-2021                                                                                                                                                                                              
+01-01-2022                                                                                                                                                                                              
+01-01-2023                                                                                                                                                                                              
+01-01-2024                                                                                                                                                                                              
+01-01-2025                                                                                                                                                                                              
+
+SQL> select account_id,
+  2  case
+  3  when balance >5000 then 'high balance'
+  4  else 'stanard balance'
+  5  end;
+end
+  *
+ERROR at line 5:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE                                                                                                                                                  
+---------- ----------- -------------------- ----------                                                                                                                                                  
+         1           1 saving                     1500                                                                                                                                                  
+         2           2 saving                     2000                                                                                                                                                  
+         3           3 saving                     2500                                                                                                                                                  
+         4           4 current                    3000                                                                                                                                                  
+         5           5 current                    5000                                                                                                                                                  
+
+SQL> select account_id,
+  2  case
+  3  case
+  4  
+SQL> select account_id,
+  2  case
+  3  when balance >500 then 'high balance'
+  4  else 'stanard balance'
+  5  end;
+end
+  *
+ERROR at line 5:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT account_id,
+  2         CASE
+  3             WHEN balance > 500 THEN 'high balance'
+  4             ELSE 'standard balance'
+  5         END AS balance_status
+  6  FROM accounts;
+
+ACCOUNT_ID BALANCE_STATUS                                                                                                                                                                               
+---------- ----------------                                                                                                                                                                             
+         1 high balance                                                                                                                                                                                 
+         2 high balance                                                                                                                                                                                 
+         3 high balance                                                                                                                                                                                 
+         4 high balance                                                                                                                                                                                 
+         5 high balance                                                                                                                                                                                 
+
+SQL> select balance, balance*0.85 as balance_in_euros from accounts;
+
+   BALANCE BALANCE_IN_EUROS                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+      1500             1275                                                                                                                                                                             
+      2000             1700                                                                                                                                                                             
+      2500             2125                                                                                                                                                                             
+      3000             2550                                                                                                                                                                             
+      5000             4250                                                                                                                                                                             
+
+SQL> select initcap(name) as title_case_name from customers;
+
+TITLE_CASE_NAME                                                                                                                                                                                         
+----------------------------------------------------------------------------------------------------                                                                                                    
+Atharv Yadav                                                                                                                                                                                            
+Satish Ghuge                                                                                                                                                                                            
+Ajay Kedia                                                                                                                                                                                              
+Harshad Mehta                                                                                                                                                                                           
+Adity Dude                                                                                                                                                                                              
+
+SQL> select to_char(to_date(balance,'j'),'jsp') as balance from  accounts;
+
+BALANCE                                                                                                                                                                                                 
+------------------------------------------------------------------------------                                                                                                                          
+one thousand five hundred                                                                                                                                                                               
+two thousand                                                                                                                                                                                            
+two thousand five hundred                                                                                                                                                                               
+three thousand                                                                                                                                                                                          
+five thousand                                                                                                                                                                                           
+
+SQL> select transaction_id,
+  2  case
+  3  when amount <100 then 'low value'
+  4  when amount between 100 and 1000 then 'medium value'
+  5  else 'high value'
+  6  end as tcategory
+  7  from transactions;
+
+TRANSACTION_ID TCATEGORY                                                                                                                                                                                
+-------------- ------------                                                                                                                                                                             
+             1 medium value                                                                                                                                                                             
+             2 medium value                                                                                                                                                                             
+             3 high value                                                                                                                                                                               
+             4 high value                                                                                                                                                                               
+             5 medium value                                                                                                                                                                             
+
+SQL> select transaction_id, round(amount,-2) as ramount from transactions;
+
+TRANSACTION_ID    RAMOUNT                                                                                                                                                                               
+-------------- ----------                                                                                                                                                                               
+             1        500                                                                                                                                                                               
+             2       1000                                                                                                                                                                               
+             3       1500                                                                                                                                                                               
+             4       2000                                                                                                                                                                               
+             5        200                                                                                                                                                                               
+
+SQL> select coalesce (address,'unknown') as a from customers;
+
+A                                                                                                                                                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+123 satara                                                                                                                                                                                              
+12 sambhajinagar                                                                                                                                                                                        
+21 mumbai                                                                                                                                                                                               
+23 south mumbai                                                                                                                                                                                         
+56 wai                                                                                                                                                                                                  
+
+SQL> select to_char(tdate,
+  2  'yyyy-mm-dd''t''hh24:mi:ss') as iso from transactions;
+'yyyy-mm-dd''t''hh24:mi:ss') as iso from transactions
+*
+ERROR at line 2:
+ORA-01821: date format not recognized 
+
+
+SQL> select to_char(tdate,'yyyy-mm-dd''t''hh24:mi:ss') as iso from transactions;
+select to_char(tdate,'yyyy-mm-dd''t''hh24:mi:ss') as iso from transactions
+                     *
+ERROR at line 1:
+ORA-01821: date format not recognized 
+
+
+SQL> Select to_char(tdate,YYYY-MM-DD''T''HH24:MI:SS') as iso from transactions;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> Select to_char(tdate,YYYY-MM-DD''T''HH24:MI:SS') as ISO8601DATE from transactions;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> Select to_char(tdate,'YYYY-MM-DD''T''HH24:MI:SS') as ISO8601DATE from transactions;
+Select to_char(tdate,'YYYY-MM-DD''T''HH24:MI:SS') as ISO8601DATE from transactions
+                     *
+ERROR at line 1:
+ORA-01821: date format not recognized 
+
+
+SQL> SELECT TO_CHAR(tdate, 'YYYY-MM-DD''T''HH24:MI:SS') AS ISO8601DATE
+  2  FROM transactions;
+SELECT TO_CHAR(tdate, 'YYYY-MM-DD''T''HH24:MI:SS') AS ISO8601DATE
+                      *
+ERROR at line 1:
+ORA-01821: date format not recognized 
+
+
+SQL> SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD"T"HH24:MI:SS.FF3TZR') AS ISO8601_WITH_TZ
+  2  FROM dual;
+
+ISO8601_WITH_TZ                                                                                                                                                                                         
+-------------------------------------------------------------                                                                                                                                           
+2025-07-10T08:40:49.527+05:30                                                                                                                                                                           
+
+SQL> SELECT to_char(balance) || '%' as percentage_balance from accounts;
+
+PERCENTAGE_BALANCE                                                                                                                                                                                      
+-----------------------------------------                                                                                                                                                               
+1500%                                                                                                                                                                                                   
+2000%                                                                                                                                                                                                   
+2500%                                                                                                                                                                                                   
+3000%                                                                                                                                                                                                   
+5000%                                                                                                                                                                                                   
+
+SQL> spool off

@@ -1,0 +1,1936 @@
+SQL> insert into customers (customer_id,name,email,phone,address) values( 6,'akash yadav','22ak@gmail.com','85698745638','15 satara')
+  2  /
+
+1 row created.
+
+SQL> insert all
+  2  into customers(CustomerID, Name, Email, Phone, Address) values(7,'anuja dokh','15ad@gmail.com','3888459637','75 mulashi')
+  3  into customers (CustomerID, Name, Email, Phone, Address) values(8,'kaustub dini','12kd@gmail.com','3865457637','78 mulashi')
+  4  /
+into customers (CustomerID, Name, Email, Phone, Address) values(8,'kaustub dini','12kd@gmail.com','3865457637','78 mulashi')
+                                                                                                                           *
+ERROR at line 3:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT ALL
+  2    INTO customers (CustomerID, Name, Email, Phone, Address)
+  3      VALUES (7, 'anuja dokh', '15ad@gmail.com', '3888459637', '75 mulashi')
+  4    INTO customers (CustomerID, Name, Email, Phone, Address)
+  5      VALUES (8, 'kaustub dini', '12kd@gmail.com', '3865457637', '78 mulashi')
+  6  SELECT * FROM dual;
+  INTO customers (CustomerID, Name, Email, Phone, Address)
+                  *
+ERROR at line 2:
+ORA-00904: "CUSTOMERID": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  INSERT ALL
+  2    INTO customers (Customer_ID, Name, Email, Phone, Address)
+  3      VALUES (7, 'anuja dokh', '15ad@gmail.com', '3888459637', '75 mulashi')
+  4    INTO customers (Customer_ID, Name, Email, Phone, Address)
+  5      VALUES (8, 'kaustub dini', '12kd@gmail.com', '3865457637', '78 mulashi')
+  6* SELECT * FROM dual
+SQL> /
+
+2 rows created.
+
+SQL> select * from dual;
+
+D                                                                               
+-                                                                               
+X                                                                               
+
+SQL> insert into (account_id,customer_id,account_Type,account_creation_date,balance) values (6,6,'checking',to_date('05-dec-23','dd-mm-yyyy'),5000.00);
+insert into (account_id,customer_id,account_Type,account_creation_date,balance) values (6,6,'checking',to_date('05-dec-23','dd-mm-yyyy'),5000.00)
+             *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+  2  VALUES (6, 6, 'checking', TO_DATE('05-dec-23','dd-mon-yy'), 5000.00);
+INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+                                                             *
+ERROR at line 1:
+ORA-00904: "ACCOUNT_CREATION_DATE": invalid identifier 
+
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, creation_date, balance)
+  2  VALUES (6, 6, 'checking', TO_DATE('05-dec-23','dd-mon-yy'), 5000.00);
+INSERT INTO accounts (account_id, customer_id, account_type, creation_date, balance)
+                                                             *
+ERROR at line 1:
+ORA-00904: "CREATION_DATE": invalid identifier 
+
+
+SQL> desc accounts;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ACCOUNT_ID                                NOT NULL NUMBER
+ CUSTOMER_ID                                        NUMBER
+ ACCOUNT_TYPE                              NOT NULL VARCHAR2(20)
+ BALANCE                                            NUMBER
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, balance)
+  2  VALUES (6, 6, 'checking', 5000.00);
+
+1 row created.
+
+SQL> ALTER TABLE accounts
+  2  ADD account_creation_date DATE;
+
+Table altered.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                
+---------- ----------- -------------------- ---------- ---------                
+         1           1 saving                     1500                          
+         2           2 saving                     2000                          
+         3           3 saving                     2500                          
+         4           4 current                    3000                          
+         5           5 current                    5000                          
+         6           6 checking                   5000                          
+
+6 rows selected.
+
+SQL> UPDATE accounts
+  2  SET account_creation_date = TO_DATE('01-JAN-2024', 'DD-MON-YYYY');
+
+6 rows updated.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                
+---------- ----------- -------------------- ---------- ---------                
+         1           1 saving                     1500 01-JAN-24                
+         2           2 saving                     2000 01-JAN-24                
+         3           3 saving                     2500 01-JAN-24                
+         4           4 current                    3000 01-JAN-24                
+         5           5 current                    5000 01-JAN-24                
+         6           6 checking                   5000 01-JAN-24                
+
+6 rows selected.
+
+SQL> UPDATE accounts
+  2  SET account_creation_date = TO_DATE('05-DEC-2023', 'DD-MON-YYYY')
+  3  WHERE account_id = 6;
+
+1 row updated.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                
+---------- ----------- -------------------- ---------- ---------                
+         1           1 saving                     1500 01-JAN-24                
+         2           2 saving                     2000 01-JAN-24                
+         3           3 saving                     2500 01-JAN-24                
+         4           4 current                    3000 01-JAN-24                
+         5           5 current                    5000 01-JAN-24                
+         6           6 checking                   5000 05-DEC-23                
+
+6 rows selected.
+
+SQL> update accounts
+  2  set account_creation_date = to_date ('15-oct-2016','dd-mm-yyyy')
+  3  wher account_id = 5;
+wher account_id = 5
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  update accounts
+  2  set account_creation_date = to_date ('15-oct-2016','dd-mm-yyyy')
+  3* where account_id = 5
+SQL> /
+
+1 row updated.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                
+---------- ----------- -------------------- ---------- ---------                
+         1           1 saving                     1500 01-JAN-24                
+         2           2 saving                     2000 01-JAN-24                
+         3           3 saving                     2500 01-JAN-24                
+         4           4 current                    3000 01-JAN-24                
+         5           5 current                    5000 15-OCT-16                
+         6           6 checking                   5000 05-DEC-23                
+
+6 rows selected.
+
+SQL> update accounts
+  2  set accounts_creation_date = to_Date('03-nov-2017','dd-mm-yyyy')
+  3  where account_id = 3;
+set accounts_creation_date = to_Date('03-nov-2017','dd-mm-yyyy')
+    *
+ERROR at line 2:
+ORA-00904: "ACCOUNTS_CREATION_DATE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  update accounts
+  2  set account_creation_date = to_Date('03-nov-2017','dd-mm-yyyy')
+  3* where account_id = 3
+SQL> /
+
+1 row updated.
+
+SQL> INSERT INTO Transactions (TransactionID, AccountID, tDate, Amount, TransactionType)values
+  2  (6,6,to_date('06-jan-2019','dd-mm-yyyy'),1500.00,'withdrawal');
+INSERT INTO Transactions (TransactionID, AccountID, tDate, Amount, TransactionType)values
+                                                                   *
+ERROR at line 1:
+ORA-00904: "TRANSACTIONTYPE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* INSERT INTO Transactions (Transaction_ID, Account_ID, tDate, Amount, Transaction_Type)values(6,6,to_date('06-jan-2019','dd-mm-yyyy'),1500.00,'withdrawal')
+SQL> /
+
+1 row created.
+
+SQL> insert into accounts (AccountID, CustomerID, AccountType, AccountCreationDate, Balance)
+  2  select 6,customer_id,'checking','2023-jun-20',500.00
+  3  from customrs
+  4  where customer_id IN(select customer_id from accounts
+  5  where balance >1000);
+from customrs
+     *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  insert into accounts (AccountID, Customer_ID, Account_Type, Account_Creation_Date, Balance)
+  2  select 6,customer_id,'checking','2023-jun-20',500.00
+  3  from customrs
+  4  where customer_id IN(select customer_id from accounts
+  5* where balance >1000)
+SQL> /
+from customrs
+     *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+  2  SELECT 6, customer_id, 'checking', TO_DATE('2023-jun-20', 'YYYY-MON-DD'), 500.00
+  3  FROM customers
+  4  WHERE customer_id IN (
+  5    SELECT customer_id
+  6    FROM accounts
+  7    WHERE balance > 1000
+  8  );
+INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.SYS_C007528) violated 
+
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+  2  SELECT 5, customer_id, 'checking', TO_DATE('2023-jun-20', 'YYYY-MON-DD'), 500.00
+  3  FROM customers
+  4  WHERE customer_id IN (
+  5    SELECT customer_id
+  6    FROM accounts
+  7    WHERE balance > 1000
+  8  )
+  9  AND ROWNUM = 1;
+INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.SYS_C007528) violated 
+
+
+SQL> INSERT INTO accounts (account_id, customer_id, account_type, account_creation_date, balance)
+  2  SELECT account_seq.NEXTVAL, customer_id, 'checking', TO_DATE('2023-jun-20', 'YYYY-MON-DD'), 500.00
+  3  FROM customers
+  4  WHERE customer_id IN (
+  5    SELECT customer_id
+  6    FROM accounts
+  7    WHERE balance > 1000
+  8  );
+SELECT account_seq.NEXTVAL, customer_id, 'checking', TO_DATE('2023-jun-20', 'YYYY-MON-DD'), 500.00
+       *
+ERROR at line 2:
+ORA-02289: sequence does not exist 
+
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                
+---------- ----------- -------------------- ---------- ---------                
+         1           1 saving                     1500 01-JAN-24                
+         2           2 saving                     2000 01-JAN-24                
+         3           3 saving                     2500 03-NOV-17                
+         4           4 current                    3000 01-JAN-24                
+         5           5 current                    5000 15-OCT-16                
+         6           6 checking                   5000 05-DEC-23                
+
+6 rows selected.
+
+SQL> select * from customers;
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          1                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+Atharv yadav                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+av12@gmail,com                                                                  
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+7894561230                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+123 satara                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          2                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+satish ghuge                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+sg@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+7894561230                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+12 sambhajinagar                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          3                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+ajay kedia                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+ak@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+5254789846                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+21 mumbai                                                                       
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          4                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+harshad mehta                                                                   
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+hm@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+7584658944                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+23 south mumbai                                                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          5                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+adity dude                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+ad@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+4455665859                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+56 wai                                                                          
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          6                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+akash yadav                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+22ak@gmail.com                                                                  
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+85698745638                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+15 satara                                                                       
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          7                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+anuja dokh                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+15ad@gmail.com                                                                  
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+3888459637                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+75 mulashi                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+          8                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+kaustub dini                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+12kd@gmail.com                                                                  
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+3865457637                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+78 mulashi                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+  ISACTIVE                                                                      
+----------                                                                      
+                                                                                
+
+8 rows selected.
+
+SQL> set pagesize 200;
+SQL> set linesize 200;
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          6 akash yadav                                                                                                                                                                                 
+22ak@gmail.com                                                                                       85698745638                                                                                        
+15 satara                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          7 anuja dokh                                                                                                                                                                                  
+15ad@gmail.com                                                                                       3888459637                                                                                         
+75 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini                                                                                                                                                                                
+12kd@gmail.com                                                                                       3865457637                                                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> set name format a19;
+SP2-0158: unknown SET option "name"
+SQL> set nameformat a19;
+SP2-0158: unknown SET option "nameformat"
+SQL> set nameformat a19
+SP2-0158: unknown SET option "nameformat"
+SQL> COLUMN name FORMAT A19
+SQL> COLUMN customer_id FORMAT A19
+SQL> /
+
+CUSTOMER_ID NAME                EMAIL                                                                                                PHONE                                                              
+----------- ------------------- ---------------------------------------------------------------------------------------------------- ---------------                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+ ########## Atharv yadav        av12@gmail,com                                                                                       7894561230                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## satish ghuge        sg@gmail,com                                                                                         7894561230                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## ajay kedia          ak@gmail,com                                                                                         5254789846                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## harshad mehta       hm@gmail,com                                                                                         7584658944                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## adity dude          ad@gmail,com                                                                                         4455665859                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## akash yadav         22ak@gmail.com                                                                                       85698745638                                                        
+15 satara                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## anuja dokh          15ad@gmail.com                                                                                       3888459637                                                         
+75 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ ########## kaustub dini        12kd@gmail.com                                                                                       3865457637                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> COLUMN customer_id FORMAT 9999999999
+SQL> /
+
+CUSTOMER_ID NAME                EMAIL                                                                                                PHONE                                                              
+----------- ------------------- ---------------------------------------------------------------------------------------------------- ---------------                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+          1 Atharv yadav        av12@gmail,com                                                                                       7894561230                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          2 satish ghuge        sg@gmail,com                                                                                         7894561230                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia          ak@gmail,com                                                                                         5254789846                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          4 harshad mehta       hm@gmail,com                                                                                         7584658944                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          5 adity dude          ad@gmail,com                                                                                         4455665859                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          6 akash yadav         22ak@gmail.com                                                                                       85698745638                                                        
+15 satara                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          7 anuja dokh          15ad@gmail.com                                                                                       3888459637                                                         
+75 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini        12kd@gmail.com                                                                                       3865457637                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> begin
+  2  insert into customers(Customer_ID, Name, Email, Phone, Address)
+  3  values( 7,'akashy rathod','ar75@gmail.com','88228247631','68 kolhapur')
+  4  end'
+  5  /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  begin
+  2  insert into customers(Customer_ID, Name, Email, Phone, Address)
+  3  values( 7,'akashy rathod','ar75@gmail.com','88228247631','68 kolhapur')
+  4* end
+SQL> /
+end
+*
+ERROR at line 4:
+ORA-06550: line 3, column 73: 
+PL/SQL: ORA-00933: SQL command not properly ended 
+ORA-06550: line 2, column 1: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 4, column 3: 
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the following: 
+; 
+
+
+SQL> BEGIN
+  2    INSERT INTO customers(Customer_ID, Name, Email, Phone, Address)
+  3    VALUES(7, 'akashy rathod', 'ar75@gmail.com', '88228247631', '68 kolhapur');
+  4  END;
+  5  /
+BEGIN
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.SYS_C007524) violated 
+ORA-06512: at line 2 
+
+
+SQL> INSERT INTO Transactions (TransactionID, AccountID, tDate, Amount, TransactionType)
+  2  SELECT 1, AccountID, TO_DATE('06-JAN-23', 'DD-MON-YY'), 100.00, 'Withdrawal'
+  3  FROM Accounts
+  4  WHERE AccountID = 1 AND Balance >= 100.00;
+WHERE AccountID = 1 AND Balance >= 100.00
+      *
+ERROR at line 4:
+ORA-00904: "ACCOUNTID": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  INSERT INTO Transactions (Transaction_ID, Account_ID, tDate, Amount, Transaction_Type)
+  2  SELECT 1, Account_ID, TO_DATE('06-JAN-23', 'DD-MON-YY'), 100.00, 'Withdrawal'
+  3  FROM Accounts
+  4* WHERE Account_ID = 1 AND Balance >= 100.00
+SQL> /
+INSERT INTO Transactions (Transaction_ID, Account_ID, tDate, Amount, Transaction_Type)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.SYS_C007534) violated 
+
+
+SQL> update customers
+  2  set email = 'at52@gmail.com'
+  3  where customer_id = 1;
+
+1 row updated.
+
+SQL> update customers
+  2  set is_active = 'N'
+  3  where customer_id not in ( select distinct customer_id from transactions);
+set is_active = 'N'
+    *
+ERROR at line 2:
+ORA-00904: "IS_ACTIVE": invalid identifier 
+
+
+SQL> update accounts
+  2  set balance = balance * 10
+  3  where balance >10000;
+
+0 rows updated.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  update accounts
+  2  set balance = balance * 10
+  3* where balance >1000
+SQL> /
+
+6 rows updated.
+
+SQL> update accounts
+  2  set account_type = 'premium'
+  3  where balance >=1500;
+
+6 rows updated.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                                                                                                                                        
+---------- ----------- -------------------- ---------- ---------                                                                                                                                        
+         1           1 premium                   15000 01-JAN-24                                                                                                                                        
+         2           2 premium                   20000 01-JAN-24                                                                                                                                        
+         3           3 premium                   25000 03-NOV-17                                                                                                                                        
+         4           4 premium                   30000 01-JAN-24                                                                                                                                        
+         5           5 premium                   50000 15-OCT-16                                                                                                                                        
+         6           6 premium                   50000 05-DEC-23                                                                                                                                        
+
+6 rows selected.
+
+SQL> update customers
+  2  set email = '25at@gmail.com', address='25,solashi,satara'
+  3  where customer_id =2;
+
+1 row updated.
+
+SQL> update accounts
+  2  set balance = 0
+  3  where account_id in(select account_id
+  4  from accounts
+  5  where status ='inactive');
+where status ='inactive')
+      *
+ERROR at line 5:
+ORA-00904: "STATUS": invalid identifier 
+
+
+SQL> update transactions
+  2  set amount = amount
+  3  
+SQL> update transactions
+  2  set amount = amount +50
+  3  where tdate >=add_months(sysdate,-1);
+
+0 rows updated.
+
+SQL> update customers
+  2  set address ='unknown'
+  3  where customer_id
+  4  in(select customer_id from accounts where balance <100);
+
+0 rows updated.
+
+SQL> update customers
+  2  set name = name ||'(VIP)'
+  3  where customer_id
+  4  IN(
+  5  select distinct customer_id
+  6  from accounts where status = 'Active');
+from accounts where status = 'Active')
+                    *
+ERROR at line 6:
+ORA-00904: "STATUS": invalid identifier 
+
+
+SQL> update customers
+  2  set isactive = 'y'
+  3  where customer_id
+  4  In( select distinct customer_id from trnasactions
+  5  where tdate >= add_months (sysdate,-1));;
+where tdate >= add_months (sysdate,-1));
+                                       *
+ERROR at line 5:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  update customers
+  2  set isactive = 'y'
+  3  where customer_id
+  4  In( select distinct customer_id from trnasactions
+  5* where tdate >= add_months (sysdate,-1));
+SQL> /
+where tdate >= add_months (sysdate,-1));
+                                       *
+ERROR at line 5:
+ORA-00911: invalid character 
+
+
+SQL> update accounts
+  2  set account
+  3  
+SQL> update accounts
+  2  set account_type ='inactive'
+  3  where account_id
+  4  not in (select distinct
+  5  account_id from transactions where tdate > add_months(sysdate,-12));
+
+5 rows updated.
+
+SQL> UPDATE Customers
+  2  SET Address = 'New Town'
+  3  WHERE Address LIKE '%Old Town%';
+
+0 rows updated.
+
+SQL> update transactions
+  2  set transaction_type = 'transfer'
+  3  where tdate >= to_date('01-jan-2023','dd-mm-yyyy');
+
+3 rows updated.
+
+SQL> update accounts a
+  2  set balance =balance -(select sum(amount) from transactions where account_id= a.account_id)
+  3  where exists
+  4  (select 1 from transactions where account_id = a.account_id);
+
+6 rows updated.
+
+SQL> update customers
+  2  set phone = 'N/A'
+  3  where phone is null;
+
+0 rows updated.
+
+SQL> update accounts
+  2  set balance = balance +100
+  3  where customer_id
+  4  in(select customer_id from customers where name like 'j%');
+
+0 rows updated.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  update accounts
+  2  set balance = balance +100
+  3  where customer_id
+  4* in(select customer_id from customers where name like '%j%')
+SQL> /
+
+1 row updated.
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                                                                                                                                        
+---------- ----------- -------------------- ---------- ---------                                                                                                                                        
+         1           1 inactive                  14500 01-JAN-24                                                                                                                                        
+         2           2 inactive                  19000 01-JAN-24                                                                                                                                        
+         3           3 inactive                  23600 03-NOV-17                                                                                                                                        
+         4           4 inactive                  28000 01-JAN-24                                                                                                                                        
+         5           5 premium                   49800 15-OCT-16                                                                                                                                        
+         6           6 inactive                  48500 05-DEC-23                                                                                                                                        
+
+6 rows selected.
+
+SQL> update customers
+  2  set email = replace(email,'ak@gmail.com','12ak@gmail.com')
+  3  where
+  4  email like '%ak@gmail.com');
+email like '%ak@gmail.com')
+                          *
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> update transactions
+  2  set transaction_type = 'transfer'
+  3  where
+  4  tdate >= to_date('01-feb-23','dd-mm-yyyy');
+
+6 rows updated.
+
+SQL> update accounts a
+  2  set balance = balance -(select sum(amount) from transactions
+  3  where
+  4  account_id = a.account_id)
+  5  where exists ( select 1 from transactions where amount account_id = a.account_id);
+where exists ( select 1 from transactions where amount account_id = a.account_id)
+                                                       *
+ERROR at line 5:
+ORA-00920: invalid relational operator 
+
+
+SQL> update customers
+  2  set phone ='N/A'
+  3  where phone is null;
+
+0 rows updated.
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME                EMAIL                                                                                                PHONE                                                              
+----------- ------------------- ---------------------------------------------------------------------------------------------------- ---------------                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+          1 Atharv yadav        at52@gmail.com                                                                                       7894561230                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          2 satish ghuge        25at@gmail.com                                                                                       7894561230                                                         
+25,solashi,satara                                                                                                                                                                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia          ak@gmail,com                                                                                         5254789846                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          4 harshad mehta       hm@gmail,com                                                                                         7584658944                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          5 adity dude          ad@gmail,com                                                                                         4455665859                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          6 akash yadav         22ak@gmail.com                                                                                       85698745638                                                        
+15 satara                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          7 anuja dokh          15ad@gmail.com                                                                                       3888459637                                                         
+75 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini        12kd@gmail.com                                                                                       3865457637                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> delete from customers where email not like '%12kd@gmail.com%';
+delete from customers where email not like '%12kd@gmail.com%'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007529) violated - child record found 
+
+
+SQL> delete from accounts where email not like '%12kd@gmail.com%';
+delete from accounts where email not like '%12kd@gmail.com%'
+                           *
+ERROR at line 1:
+ORA-00904: "EMAIL": invalid identifier 
+
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE ACCOUNT_C                                                                                                                                        
+---------- ----------- -------------------- ---------- ---------                                                                                                                                        
+         1           1 inactive                  14500 01-JAN-24                                                                                                                                        
+         2           2 inactive                  19000 01-JAN-24                                                                                                                                        
+         3           3 inactive                  23600 03-NOV-17                                                                                                                                        
+         4           4 inactive                  28000 01-JAN-24                                                                                                                                        
+         5           5 premium                   49800 15-OCT-16                                                                                                                                        
+         6           6 inactive                  48500 05-DEC-23                                                                                                                                        
+
+6 rows selected.
+
+SQL> delete from accounts where account_type not like '%inactive%';
+delete from accounts where account_type not like '%inactive%'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> select * from transactions;
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             6          6 06-JAN-19       1500 transfer                                                                                                                                                 
+             1          1 01-JAN-21        500 transfer                                                                                                                                                 
+             2          2 01-JAN-22       1000 transfer                                                                                                                                                 
+             3          3 01-JAN-23       1500 transfer                                                                                                                                                 
+             4          4 01-JAN-24       2000 transfer                                                                                                                                                 
+             5          5 01-JAN-25        200 transfer                                                                                                                                                 
+
+6 rows selected.
+
+SQL> delete from transactions where transaction_type not like '%transfer%';
+
+0 rows deleted.
+
+SQL> delete from customers
+  2  where
+  3  name like 'A%' and phone is not null;
+delete from customers
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007529) violated - child record found 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  delete from customers
+  2  where
+  3* name like 'A%' and phone is  null
+SQL> /
+
+0 rows deleted.
+
+SQL> delete from customers
+  2  where phone is null and address = 'unknown';
+
+0 rows deleted.
+
+SQL> update accounts
+  2  delete from customers where customer_id <100;
+delete from customers where customer_id <100
+*
+ERROR at line 2:
+ORA-00971: missing SET keyword 
+
+
+SQL> delete from customers where customer_id <1;
+
+0 rows deleted.
+
+SQL> delete from customers where name IN ('atharv yadav','anuja dokh');
+
+1 row deleted.
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME                EMAIL                                                                                                PHONE                                                              
+----------- ------------------- ---------------------------------------------------------------------------------------------------- ---------------                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ISACTIVE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+          1 Atharv yadav        at52@gmail.com                                                                                       7894561230                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          2 satish ghuge        25at@gmail.com                                                                                       7894561230                                                         
+25,solashi,satara                                                                                                                                                                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia          ak@gmail,com                                                                                         5254789846                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          4 harshad mehta       hm@gmail,com                                                                                         7584658944                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          5 adity dude          ad@gmail,com                                                                                         4455665859                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          6 akash yadav         22ak@gmail.com                                                                                       85698745638                                                        
+15 satara                                                                                                                                                                                               
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini        12kd@gmail.com                                                                                       3865457637                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+7 rows selected.
+
+SQL> delete from customers where email <> '12@gmail.com';
+delete from customers where email <> '12@gmail.com'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007529) violated - child record found 
+
+
+SQL> delete from customers where customer_id between 6and 10;
+delete from customers where customer_id between 6and 10
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007529) violated - child record found 
+
+
+SQL> delete from customers where customer_id not in (select customer_id from accounts);
+
+1 row deleted.
+
+SQL> delete from customers where name like '%admin%' OR name like '%user%';
+
+0 rows deleted.
+
+SQL> delete from customers where name not like '%test%';
+delete from customers where name not like '%test%'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007529) violated - child record found 
+
+
+SQL> delete from accounts where balance >= 1000;
+delete from accounts where balance >= 1000
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> delete from accounts where account_type = 'saving' and account_creation_date < TO_date('2020-01-01','yyyy-mm-dd');
+
+0 rows deleted.
+
+SQL> delete from accounts where account_id not in (1,2);
+delete from accounts where account_id not in (1,2)
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> delete from accounts where account_creation_date between to_date('2020-01-01','yyyy-mm-dd;)and to_Date
+  2  ('2020-12-31','yyyy-mm-dd');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> delete from accounts where account_creation_Date > to_date('2021-03-01','yyyy-mm-dd') and balance !=100;
+delete from accounts where account_creation_Date > to_date('2021-03-01','yyyy-mm-dd') and balance !=100
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> update accounts
+  2  set account_Type = 'review'
+  3  where balance not between 100 and 1000;
+
+6 rows updated.
+
+SQL> delete from accounts where balance NOT IN(0,100
+  2  );
+delete from accounts where balance NOT IN(0,100
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* delete from accounts where balance NOT IN(0,100)
+SQL> /
+delete from accounts where balance NOT IN(0,100)
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.SYS_C007535) violated - child record found 
+
+
+SQL> DELETE FROM Transactions
+  2  WHERE
+  3  TransactionType IN ('Deposit', 'Transfer')
+  4  AND
+  5  tDate < TO_DATE('2022-02-01', 'YYYY-MM-DD');
+TransactionType IN ('Deposit', 'Transfer')
+*
+ERROR at line 3:
+ORA-00904: "TRANSACTIONTYPE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DELETE FROM Transactions
+  2  WHERE
+  3  Transaction_Type IN ('Deposit', 'Transfer')
+  4  AND
+  5* tDate < TO_DATE('2022-02-01', 'YYYY-MM-DD')
+SQL> /
+
+0 rows deleted.
+
+SQL> delete from trnasactions where account_id notin (select account_id from accounts);
+delete from trnasactions where account_id notin (select account_id from accounts)
+                                          *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> DELETE FROM transactions
+  2  WHERE account_id NOT IN (SELECT account_id FROM accounts);
+
+0 rows deleted.
+
+SQL> delete  from transactions where to_char(tdate,'D') IN(1,7);
+
+3 rows deleted.
+
+SQL> delete from transactions where amount between 200 and 500;
+
+2 rows deleted.
+
+SQL> merge into customers c
+  2  using temp_customers t
+  3  on (c.customer_id = t.customer_id)
+  4  when matched then
+  5  update set c.email = t.email,c.phone = t.phone
+  6  when not matched then
+  7  insert (customer_id,name,email,phone,address)
+  8  values (t.customer_id,t.name,t.email,t.phone,t.address);
+using temp_customers t
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> MERGE INTO customers c
+  2  USING temp_customers t
+  3  ON (c.customer_id = t.customer_id)
+  4  WHEN MATCHED THEN
+  5    UPDATE SET c.email = t.email, c.phone = t.phone
+  6  WHEN NOT MATCHED THEN
+  7    INSERT (customer_id, name, email, phone, address)
+  8    VALUES (t.customer_id, t.name, t.email, t.phone, t.address);
+USING temp_customers t
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> MERGE INTO Accounts a
+  2  USING TempAccounts t
+  3  ON (a.AccountID = t.AccountID)
+  4  WHEN MATCHED AND a.AccountType != t.AccountType THEN
+  5  UPDATE SET a.AccountType = t.AccountType
+  6  WHEN NOT MATCHED THEN
+  7  INSERT (AccountID, CustomerID, AccountType, Balance, AccountCreationDate)
+  8  VALUES (t.AccountID, t.CustomerID, t.AccountType, t.Balance, t.AccountCreationDate);
+WHEN MATCHED AND a.AccountType != t.AccountType THEN
+             *
+ERROR at line 4:
+ORA-00905: missing keyword 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  MERGE INTO Accounts a
+  2  USING Temp_Accounts t
+  3  ON (a.Account_ID = t.Account_ID)
+  4  WHEN MATCHED AND a.Account_Type != t.Account_Type THEN
+  5  UPDATE SET a.Account_Type = t.Account_Type
+  6  WHEN NOT MATCHED THEN
+  7  INSERT (Account_ID, Customer_ID, Account_Type, Balance, Account_Creation_Date)
+  8* VALUES (t.Account_ID, t.Customer_ID, t.Account_Type, t.Balance, t.Account_Creation_Date)
+SQL> /
+WHEN MATCHED AND a.Account_Type != t.Account_Type THEN
+             *
+ERROR at line 4:
+ORA-00905: missing keyword 
+
+
+SQL> MERGE INTO Transactions t
+  2  USING TempTransactions temp
+  3  ON (t.TransactionID = temp.TransactionID)
+  4  WHEN MATCHED THEN
+  5  UPDATE SET t.Amount = temp.Amount
+  6  WHEN NOT MATCHED THEN
+  7  INSERT (TransactionID, AccountID, tDate, Amount, TransactionType)
+  8  VALUES (temp.TransactionID, temp.AccountID, temp.tDate, temp.Amount, temp.TransactionType);
+USING TempTransactions temp
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  MERGE INTO Transactions t
+  2  USING Temp_Transactions temp
+  3  ON (t.Transaction_ID = temp.Transaction_ID)
+  4  WHEN MATCHED THEN
+  5  UPDATE SET t.Amount = temp.Amount
+  6  WHEN NOT MATCHED THEN
+  7  INSERT (Transaction_ID, Account_ID, tDate, Amount, Transaction_Type)
+  8* VALUES (temp.Transaction_ID, temp.Account_ID, temp.tDate, temp.Amount, temp.Transaction_Type)
+SQL> /
+USING Temp_Transactions temp
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> MERGE INTO Transactions t
+  2  USING Temp_Transactions temp
+  3  ON (t.Transaction_ID = temp.Transaction_ID)
+  4  WHEN MATCHED THEN
+  5    UPDATE SET t.Amount = temp.Amount
+  6  WHEN NOT MATCHED THEN
+  7    INSERT (Transaction_ID, Account_ID, tDate, Amount, Transaction_Type)
+  8    VALUES (temp.Transaction_ID, temp.Account_ID, temp.tDate, temp.Amount, temp.Transaction_Type);
+USING Temp_Transactions temp
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> MERGE INTO Accounts a
+  2  USING TempAccounts t
+  3  ON (a.AccountID = t.AccountID)
+  4  WHEN MATCHED
+  5  AND
+  6  (a.AccountCreationDate IS NULL OR a.AccountCreationDate != t.AccountCreationDate)
+  7  THEN
+  8  UPDATE SET a.AccountCreationDate = t.AccountCreationDate
+  9  WHEN NOT MATCHED THEN
+ 10  INSERT (AccountID, CustomerID, AccountType, Balance, AccountCreationDate)
+ 11  VALUES (t.AccountID, t.CustomerID, t.AccountType, t.Balance, t.AccountCreationDate);
+AND
+*
+ERROR at line 5:
+ORA-00905: missing keyword 
+
+
+SQL> spool off

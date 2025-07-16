@@ -1,0 +1,1052 @@
+SQL> select * from customers;
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+          1                                                                     
+Atharv yadav                                                                    
+av12@gmail,com                                                                  
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+7894561230                                                                      
+123 satara                                                                      
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+          2                                                                     
+satish ghuge                                                                    
+sg@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+7894561230                                                                      
+12 sambhajinagar                                                                
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+          3                                                                     
+ajay kedia                                                                      
+ak@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+5254789846                                                                      
+21 mumbai                                                                       
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+          4                                                                     
+harshad mehta                                                                   
+hm@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+7584658944                                                                      
+23 south mumbai                                                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+          5                                                                     
+adity dude                                                                      
+ad@gmail,com                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+EMAIL                                                                           
+--------------------------------------------------------------------------------
+PHONE                                                                           
+---------------                                                                 
+ADDRESS                                                                         
+--------------------------------------------------------------------------------
+4455665859                                                                      
+56 wai                                                                          
+                                                                                
+
+SQL> set pagesize 200;
+SQL> set linesize 200;
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+
+SQL> select * from transactions;
+
+no rows selected
+
+SQL> select atharv,av12@gmail.com from customers;
+select atharv,av12@gmail.com from customers
+*
+ERROR at line 1:
+ORA-04054: database link GMAIL.COM does not exist 
+
+
+SQL> select atharv from customers;
+select atharv from customers
+       *
+ERROR at line 1:
+ORA-00904: "ATHARV": invalid identifier 
+
+
+SQL> desc customers;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CUSTOMER_ID                                                                                                       NOT NULL NUMBER
+ NAME                                                                                                              NOT NULL VARCHAR2(100)
+ EMAIL                                                                                                                      VARCHAR2(100)
+ PHONE                                                                                                             NOT NULL VARCHAR2(15)
+ ADDRESS                                                                                                                    VARCHAR2(255)
+
+SQL> select atharv from customers;
+select atharv from customers
+       *
+ERROR at line 1:
+ORA-00904: "ATHARV": invalid identifier 
+
+
+SQL> select name from customers;
+
+NAME                                                                                                                                                                                                    
+----------------------------------------------------------------------------------------------------                                                                                                    
+Atharv yadav                                                                                                                                                                                            
+satish ghuge                                                                                                                                                                                            
+ajay kedia                                                                                                                                                                                              
+harshad mehta                                                                                                                                                                                           
+adity dude                                                                                                                                                                                              
+
+SQL> select name,email from customers;
+
+NAME                                                                                                                                                                                                    
+----------------------------------------------------------------------------------------------------                                                                                                    
+EMAIL                                                                                                                                                                                                   
+----------------------------------------------------------------------------------------------------                                                                                                    
+Atharv yadav                                                                                                                                                                                            
+av12@gmail,com                                                                                                                                                                                          
+                                                                                                                                                                                                        
+satish ghuge                                                                                                                                                                                            
+sg@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+ajay kedia                                                                                                                                                                                              
+ak@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+harshad mehta                                                                                                                                                                                           
+hm@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+adity dude                                                                                                                                                                                              
+ad@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+
+SQL> select account_id, balance from accounts;
+
+ACCOUNT_ID    BALANCE                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1       1500                                                                                                                                                                                   
+         2       2000                                                                                                                                                                                   
+         3       2500                                                                                                                                                                                   
+         4       3000                                                                                                                                                                                   
+         5       5000                                                                                                                                                                                   
+
+SQL> select * from transactions;
+
+no rows selected
+
+SQL> desc transaction;
+ERROR:
+ORA-04043: object transaction does not exist 
+
+
+SQL> desc transactions;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ TRANSACTION_ID                                                                                                    NOT NULL NUMBER
+ ACCOUNT_ID                                                                                                                 NUMBER
+ TDATE                                                                                                             NOT NULL DATE
+ AMOUNT                                                                                                            NOT NULL NUMBER
+ TRANSACTION_TYPE                                                                                                  NOT NULL VARCHAR2(20)
+
+SQL> select * from transactions;
+
+no rows selected
+
+SQL> insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,to_date(2021-01-01,'yyyy-mm-dd'),500.00,'deposite');
+insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,to_date(2021-01-01,'yyyy-mm-dd'),500.00,'deposite')
+                                                                                                             *
+ERROR at line 1:
+ORA-01840: input value not long enough for date format 
+
+
+SQL> insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,to_date(2021-01-01,yyyy-mm-dd),500.00,'deposite');
+insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,to_date(2021-01-01,yyyy-mm-dd),500.00,'deposite')
+                                                                                                                         *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,'2021-01-01',500.00,'deposite');
+insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,'2021-01-01',500.00,'deposite')
+                                                                                              *
+ERROR at line 1:
+ORA-01861: literal does not match format string 
+
+
+SQL> insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,'2021-01-01',500.00,'deposit');
+insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values(1,1,'2021-01-01',500.00,'deposit')
+                                                                                              *
+ERROR at line 1:
+ORA-01861: literal does not match format string 
+
+
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (1, 1, TO_DATE('2021-01-01', 'YYYY-MM-DD'), 500.00, 'deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions (transaction
+  2  
+SQL> 
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (2, 2, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 1000.00, 'deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (3, 3, TO_DATE('2023-01-01', 'YYYY-MM-DD'), 1500.00, 'deposit');
+
+1 row created.
+
+SQL> (transaction_id, account_id, tdate, amount, transaction_type)
+  2  
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (4, 4, TO_DATE('2024-01-01', 'YYYY-MM-DD'),2000.00, 'deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (5, 5, TO_DATE('2025-01-01', 'YYYY-MM-DD'),200.00, 'deposit');
+
+1 row created.
+
+SQL> desc transactions;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ TRANSACTION_ID                                                                                                    NOT NULL NUMBER
+ ACCOUNT_ID                                                                                                                 NUMBER
+ TDATE                                                                                                             NOT NULL DATE
+ AMOUNT                                                                                                            NOT NULL NUMBER
+ TRANSACTION_TYPE                                                                                                  NOT NULL VARCHAR2(20)
+
+SQL> select * from transactions;
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             1          1 01-JAN-21        500 deposit                                                                                                                                                  
+             2          2 01-JAN-22       1000 deposit                                                                                                                                                  
+             3          3 01-JAN-23       1500 deposit                                                                                                                                                  
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+             5          5 01-JAN-25        200 deposit                                                                                                                                                  
+
+SQL> select customer_id,name,email from customers;
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                                                                                                                   
+----------------------------------------------------------------------------------------------------                                                                                                    
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                                                                                                                          
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                                                                                                                            
+                                                                                                                                                                                                        
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+
+SQL> set pagesize 200;
+SQL> set linesize 200;
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+
+SQL> col name format a15;
+SQL> /
+
+CUSTOMER_ID NAME            EMAIL                                                                                                PHONE                                                                  
+----------- --------------- ---------------------------------------------------------------------------------------------------- ---------------                                                        
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          1 Atharv yadav    av12@gmail,com                                                                                       7894561230                                                             
+123 satara                                                                                                                                                                                              
+                                                                                                                                                                                                        
+          2 satish ghuge    sg@gmail,com                                                                                         7894561230                                                             
+12 sambhajinagar                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          3 ajay kedia      ak@gmail,com                                                                                         5254789846                                                             
+21 mumbai                                                                                                                                                                                               
+                                                                                                                                                                                                        
+          4 harshad mehta   hm@gmail,com                                                                                         7584658944                                                             
+23 south mumbai                                                                                                                                                                                         
+                                                                                                                                                                                                        
+          5 adity dude      ad@gmail,com                                                                                         4455665859                                                             
+56 wai                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+
+SQL> col address format a19;
+SQL> /
+
+CUSTOMER_ID NAME            EMAIL                                                                                                PHONE           ADDRESS                                                
+----------- --------------- ---------------------------------------------------------------------------------------------------- --------------- -------------------                                    
+          1 Atharv yadav    av12@gmail,com                                                                                       7894561230      123 satara                                             
+          2 satish ghuge    sg@gmail,com                                                                                         7894561230      12 sambhajinagar                                       
+          3 ajay kedia      ak@gmail,com                                                                                         5254789846      21 mumbai                                              
+          4 harshad mehta   hm@gmail,com                                                                                         7584658944      23 south mumbai                                        
+          5 adity dude      ad@gmail,com                                                                                         4455665859      56 wai                                                 
+
+SQL> col email format a19;
+SQL> /
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS                                                                                                                                 
+----------- --------------- ------------------- --------------- -------------------                                                                                                                     
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                                                                                                                              
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar                                                                                                                        
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                                                                                                                               
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai                                                                                                                         
+          5 adity dude      ad@gmail,com        4455665859      56 wai                                                                                                                                  
+
+SQL> select * from transactions where amount >=500;
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             1          1 01-JAN-21        500 deposit                                                                                                                                                  
+             2          2 01-JAN-22       1000 deposit                                                                                                                                                  
+             3          3 01-JAN-23       1500 deposit                                                                                                                                                  
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+
+SQL> select customer_id, name,email,phone,address from customers;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS                                                                                                                                 
+----------- --------------- ------------------- --------------- -------------------                                                                                                                     
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                                                                                                                              
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar                                                                                                                        
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                                                                                                                               
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai                                                                                                                         
+          5 adity dude      ad@gmail,com        4455665859      56 wai                                                                                                                                  
+
+SQL> select * from transaction where account_id = 1;
+select * from transaction where account_id = 1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from transactions where account_id = 1;
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             1          1 01-JAN-21        500 deposit                                                                                                                                                  
+
+SQL> select * from customers where Isactive =1;
+select * from customers where Isactive =1
+                              *
+ERROR at line 1:
+ORA-00904: "ISACTIVE": invalid identifier 
+
+
+SQL> select * from customers where Isactive =2;
+select * from customers where Isactive =2
+                              *
+ERROR at line 1:
+ORA-00904: "ISACTIVE": invalid identifier 
+
+
+SQL> alter table customers column (Isactive, number);
+alter table customers column (Isactive, number)
+                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* alter customers column(Isactive, number)
+SQL> /
+alter customers column(Isactive, number)
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> alter table customers add (Isactive, number);
+alter table customers add (Isactive, number)
+                                     *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE customers
+  2  ADD (Isactive NUMBER);
+
+Table altered.
+
+SQL> /
+ADD (Isactive NUMBER)
+     *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                                                                                                                              
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar                                                                                                                        
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                                                                                                                               
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai                                                                                                                         
+          5 adity dude      ad@gmail,com        4455665859      56 wai                                                                                                                                  
+
+SQL> inert into customers (isactive) values (1);
+SP2-0734: unknown command beginning "inert into..." - rest of line ignored.
+SQL> 
+SQL> INSERT INTO customers (isactive) VALUES (1);
+INSERT INTO customers (isactive) VALUES (1)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("HR"."CUSTOMERS"."CUSTOMER_ID") 
+
+
+SQL> UPDATE customers
+  2  SET isactive = 1;
+
+5 rows updated.
+
+SQL> seleed
+SP2-0042: unknown command "seleed" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  insert all
+  2  into values isactive(1)
+  3  into values isactive(0)
+  4* select * from dual;
+  5  /
+into values isactive(1)
+     *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  insert all
+  2  into customers values isactive(1)
+  3  into customers values isactive(0)
+  4* select * from dual
+SQL> /
+into customers values isactive(0)
+                      *
+ERROR at line 3:
+ORA-00904: "ISACTIVE": invalid identifier 
+
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai              1                                                                                                          
+          5 adity dude      ad@gmail,com        4455665859      56 wai                       1                                                                                                          
+
+SQL> select *  from customers where name like 'j%';
+
+no rows selected
+
+SQL> select *  from customers where name like 'p%';
+
+no rows selected
+
+SQL> select *  from customers where name like 's%';
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+
+SQL> select * from customers where address like 'gmail%';
+
+no rows selected
+
+SQL> select * from customers where address like '%gmail.com';
+
+no rows selected
+
+SQL> select * from customers where address like '%sg@gmail.com';
+
+no rows selected
+
+SQL> select * from transactions where ('2024-1-1','yyyy-dd-mm
+  2  ');
+')
+ *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> select * from transactions where ('2024-1-1','yyyy-dd-mm');
+select * from transactions where ('2024-1-1','yyyy-dd-mm')
+                                                         *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select * from transactions where tdate('2024-1-1','yyyy-dd-mm');
+select * from transactions where tdate('2024-1-1','yyyy-dd-mm')
+                                                              *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select * from transactions where tdate between to_date('2024-1-1','yyyy-mm-dd');
+select * from transactions where tdate between to_date('2024-1-1','yyyy-mm-dd')
+                                                                              *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> select * from transactions where tdate between to_date('2024-1-1','yyyy-mm-dd')
+  2  And to_date('2025-01-01','yyyy-mm-dd');
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+             5          5 01-JAN-25        200 deposit                                                                                                                                                  
+
+SQL> select * from accounts where balance <500;
+
+no rows selected
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE                                                                                                                                                  
+---------- ----------- -------------------- ----------                                                                                                                                                  
+         1           1 saving                     1500                                                                                                                                                  
+         2           2 saving                     2000                                                                                                                                                  
+         3           3 saving                     2500                                                                                                                                                  
+         4           4 current                    3000                                                                                                                                                  
+         5           5 current                    5000                                                                                                                                                  
+
+SQL> select * from accounts where balance <5005;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE                                                                                                                                                  
+---------- ----------- -------------------- ----------                                                                                                                                                  
+         1           1 saving                     1500                                                                                                                                                  
+         2           2 saving                     2000                                                                                                                                                  
+         3           3 saving                     2500                                                                                                                                                  
+         4           4 current                    3000                                                                                                                                                  
+         5           5 current                    5000                                                                                                                                                  
+
+SQL> select * from accounts where balance <1000;
+
+no rows selected
+
+SQL> 
+SQL> select * from customers where phone_numbe like '123';
+select * from customers where phone_numbe like '123'
+                              *
+ERROR at line 1:
+ORA-00904: "PHONE_NUMBE": invalid identifier 
+
+
+SQL> select * from customers where phone_numbe like '%123%';
+select * from customers where phone_numbe like '%123%'
+                              *
+ERROR at line 1:
+ORA-00904: "PHONE_NUMBE": invalid identifier 
+
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai              1                                                                                                          
+          5 adity dude      ad@gmail,com        4455665859      56 wai                       1                                                                                                          
+
+SQL> select * from customers where phone like '%123%';
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+
+SQL> select * from customers where phone like '123%';
+
+no rows selected
+
+SQL> select * from customers where phone like '%123';
+
+no rows selected
+
+SQL> 
+SQL> select * from customers where address = 'Mumbai';
+
+no rows selected
+
+SQL> select * from customers where address = 'Mumbai';
+
+no rows selected
+
+SQL> select * from customers where address like 'mumbai';
+
+no rows selected
+
+SQL> select * from customers where address like 'mumbai%';
+
+no rows selected
+
+SQL> select * from customers where address like '%mumbai%';
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai              1                                                                                                          
+
+SQL> select * from transactions where trnasaction_type ='deposit';
+select * from transactions where trnasaction_type ='deposit'
+                                 *
+ERROR at line 1:
+ORA-00904: "TRNASACTION_TYPE": invalid identifier 
+
+
+SQL> select * from transactions where trnasaction_type like '%deposit';
+select * from transactions where trnasaction_type like '%deposit'
+                                 *
+ERROR at line 1:
+ORA-00904: "TRNASACTION_TYPE": invalid identifier 
+
+
+SQL> select * from transactions where trnasaction_type like '%deposit%';
+select * from transactions where trnasaction_type like '%deposit%'
+                                 *
+ERROR at line 1:
+ORA-00904: "TRNASACTION_TYPE": invalid identifier 
+
+
+SQL> select * from transactions where transaction_type ='deposit';
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             1          1 01-JAN-21        500 deposit                                                                                                                                                  
+             2          2 01-JAN-22       1000 deposit                                                                                                                                                  
+             3          3 01-JAN-23       1500 deposit                                                                                                                                                  
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+             5          5 01-JAN-25        200 deposit                                                                                                                                                  
+
+SQL> insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values (6,6,('2023-05-01','yyyy-mm-dd'),withdrwal);
+insert into transactions (transaction_id,account_id,tdate,amount,transaction_type) values (6,6,('2023-05-01','yyyy-mm-dd'),withdrwal)
+                                                                                                            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (6, 6, TO_DATE('2023-05-01', 'YYYY-MM-DD'), 1000.00, 'withdrawal');
+INSERT INTO transactions
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (HR.SYS_C007535) violated - parent key not found 
+
+
+SQL> INSERT INTO transactions
+  2  (transaction_id, account_id, tdate, amount, transaction_type)
+  3  VALUES
+  4  (6, 6, TO_DATE('2023-05-01', 'YYYY-MM-DD'), 1500.00, 'withdrawal');
+INSERT INTO transactions
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (HR.SYS_C007535) violated - parent key not found 
+
+
+SQL> INSERT INTO customers
+  2  (account_id, name, email, phone, address)
+  3  VALUES
+  4  (6, 'Om Vairat', 'omvairat@gmail.com', '9876543210', 'Pune');
+(account_id, name, email, phone, address)
+ *
+ERROR at line 2:
+ORA-00904: "ACCOUNT_ID": invalid identifier 
+
+
+SQL> desc customers;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CUSTOMER_ID                                                                                                       NOT NULL NUMBER
+ NAME                                                                                                              NOT NULL VARCHAR2(100)
+ EMAIL                                                                                                                      VARCHAR2(100)
+ PHONE                                                                                                             NOT NULL VARCHAR2(15)
+ ADDRESS                                                                                                                    VARCHAR2(255)
+ ISACTIVE                                                                                                                   NUMBER
+
+SQL> INSERT INTO customers
+  2  (customer_id, name, email, phone, address, isactive)
+  3  VALUES
+  4  (6, 'Om Vairat', 'omvairat@gmail.com', '9876543210', 'Pune', 0);
+
+1 row created.
+
+SQL> select * from transactions where transaction_type in('deposit','withdrawal');
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             1          1 01-JAN-21        500 deposit                                                                                                                                                  
+             2          2 01-JAN-22       1000 deposit                                                                                                                                                  
+             3          3 01-JAN-23       1500 deposit                                                                                                                                                  
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+             5          5 01-JAN-25        200 deposit                                                                                                                                                  
+
+SQL> select * from customers where account_type in('savings','checking');
+select * from customers where account_type in('savings','checking')
+                              *
+ERROR at line 1:
+ORA-00904: "ACCOUNT_TYPE": invalid identifier 
+
+
+SQL> select * from customers where customer_id
+  2  IN
+  3  (select customer_id from accounts where account_type In('saving','checking'));
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+
+SQL> select * from transactions where account_id IN(102,104,106);
+
+no rows selected
+
+SQL> select * from transactions where account_id IN(2,4,5);
+
+TRANSACTION_ID ACCOUNT_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                                                                         
+-------------- ---------- --------- ---------- --------------------                                                                                                                                     
+             2          2 01-JAN-22       1000 deposit                                                                                                                                                  
+             4          4 01-JAN-24       2000 deposit                                                                                                                                                  
+             5          5 01-JAN-25        200 deposit                                                                                                                                                  
+
+SQL> seleect * accounts where balance between 1000 and 5000;
+SP2-0734: unknown command beginning "seleect * ..." - rest of line ignored.
+SQL> select * accounts where balance between 1000 and 5000;
+select * accounts where balance between 1000 and 5000
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select *from  accounts where balance between 1000 and 5000;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE            BALANCE                                                                                                                                                  
+---------- ----------- -------------------- ----------                                                                                                                                                  
+         1           1 saving                     1500                                                                                                                                                  
+         2           2 saving                     2000                                                                                                                                                  
+         3           3 saving                     2500                                                                                                                                                  
+         4           4 current                    3000                                                                                                                                                  
+         5           5 current                    5000                                                                                                                                                  
+
+SQL> select * customers where phone is null;
+select * customers where phone is null
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select * from customers where phone is null;
+
+no rows selected
+
+SQL> select * from customers;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai              1                                                                                                          
+          5 adity dude      ad@gmail,com        4455665859      56 wai                       1                                                                                                          
+          6 Om Vairat       omvairat@gmail.com  9876543210      Pune                         0                                                                                                          
+
+6 rows selected.
+
+SQL> select * from customers where phone is null;
+
+no rows selected
+
+SQL> select * from transactions where amount is null ;
+
+no rows selected
+
+SQL> select * from customers where address is null;
+
+no rows selected
+
+SQL> select balance from accounts
+  2  where amount_id is null;
+where amount_id is null
+      *
+ERROR at line 2:
+ORA-00904: "AMOUNT_ID": invalid identifier 
+
+
+SQL> select balance from accounts
+  2  where account_id is not null;
+
+   BALANCE                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      1500                                                                                                                                                                                              
+      2000                                                                                                                                                                                              
+      2500                                                                                                                                                                                              
+      3000                                                                                                                                                                                              
+      5000                                                                                                                                                                                              
+
+SQL> select all from customers where isacitve is null or isactive=0;
+select all from customers where isacitve is null or isactive=0
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select all from customers where isacitve IS NULL or isactive=0;
+select all from customers where isacitve IS NULL or isactive=0
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select * from customers where email is not null;
+
+CUSTOMER_ID NAME            EMAIL               PHONE           ADDRESS               ISACTIVE                                                                                                          
+----------- --------------- ------------------- --------------- ------------------- ----------                                                                                                          
+          5 adity dude      ad@gmail,com        4455665859      56 wai                       1                                                                                                          
+          3 ajay kedia      ak@gmail,com        5254789846      21 mumbai                    1                                                                                                          
+          1 Atharv yadav    av12@gmail,com      7894561230      123 satara                   1                                                                                                          
+          4 harshad mehta   hm@gmail,com        7584658944      23 south mumbai              1                                                                                                          
+          6 Om Vairat       omvairat@gmail.com  9876543210      Pune                         0                                                                                                          
+          2 satish ghuge    sg@gmail,com        7894561230      12 sambhajinagar             1                                                                                                          
+
+6 rows selected.
+
+SQL> select account_id,customer_id,balance,
+  2  case when balamce <1000 then 'low balance'
+  3  else 'high balance' end as blancestastus from accounts;
+case when balamce <1000 then 'low balance'
+          *
+ERROR at line 2:
+ORA-00904: "BALAMCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select account_id,customer_id,balance,
+  2  case when balance <1000 then 'low balance'
+  3* else 'high balance' end as blancestastus from accounts
+SQL> /
+
+ACCOUNT_ID CUSTOMER_ID    BALANCE BLANCESTASTU                                                                                                                                                          
+---------- ----------- ---------- ------------                                                                                                                                                          
+         1           1       1500 high balance                                                                                                                                                          
+         2           2       2000 high balance                                                                                                                                                          
+         3           3       2500 high balance                                                                                                                                                          
+         4           4       3000 high balance                                                                                                                                                          
+         5           5       5000 high balance                                                                                                                                                          
+
+SQL> select transaction_type,
+  2  case when amount >1000 then 'high transaction'
+  3  else 'low transaction' end as transactionstatus
+  4  from transactions where amount is not null;
+
+TRANSACTION_TYPE     TRANSACTIONSTATU                                                                                                                                                                   
+-------------------- ----------------                                                                                                                                                                   
+deposit              low transaction                                                                                                                                                                    
+deposit              low transaction                                                                                                                                                                    
+deposit              high transaction                                                                                                                                                                   
+deposit              high transaction                                                                                                                                                                   
+deposit              low transaction                                                                                                                                                                    
+
+SQL> spool off

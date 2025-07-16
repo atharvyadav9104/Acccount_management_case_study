@@ -1,0 +1,154 @@
+SQL> create table customers(
+  2    2  customer_ID number primary key,
+  3    3  Name varchar2(100) not null,
+  4    4  email varchar2(100) Unique,
+  5    5  phone varchar2(15) not null,
+  6    6  address varchar2(255)
+  7    7  );
+  2  customer_ID number primary key,
+  *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table customers(
+  2    customer_ID number primary key,
+  3    Name varchar2(100) not null,
+  4    email varchar2(100) Unique,
+  5     phone varchar2(15) not null,
+  6    address varchar2(255)
+  7*    )
+SQL> /
+create table customers(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> /
+
+Table created.
+
+SQL>  insert into customers(customer_id,Name,Email,Phone,Address) values(1,'Atharv yadav','av12@gmail,com','7894561230','123 satara');
+
+1 row created.
+
+SQL> insert into customers(customer_id,Name,Email,Phone,Address) values(2,'satish ghuge','sg@gmail,com','7894561230','12 sambhajinagar');
+
+1 row created.
+
+SQL> insert into customers(customer_id,Name,Email,Phone,Address) values(3,'ajay kedia','ak@gmail,com','5254789846','21 mumbai');
+
+1 row created.
+
+SQL>  insert into customers(customer_id,Name,Email,Phone,Address) values(4,'harshad mehta','hm@gmail,com','7584658944','23 south mumbai');
+
+1 row created.
+
+SQL> CREATE TABLE accounts (
+  2    account_id NUMBER PRIMARY KEY,
+  3    customer_id NUMBER,
+  4    account_type VARCHAR2(20) NOT NULL,
+  5    balance NUMBER DEFAULT 0 CHECK (balance >= 0),
+  6    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+  7  );
+
+Table created.
+
+SQL>  insert into accounts( account_id,customer_id,account_type,balance) values (1,1,'saving',1500.00);
+
+1 row created.
+
+SQL> insert into accounts( account_id,customer_id,account_type,balance) values (2,2,'saving',2000.00);
+
+1 row created.
+
+SQL> insert into accounts( account_id,customer_id,account_type,balance) values (3,3,'saving',2500.00);
+
+1 row created.
+
+SQL> insert into accounts( account_id,customer_id,account_type,balance) values (4,4,'current',3000.00);
+
+1 row created.
+
+SQL> insert into accounts( account_id,customer_id,account_type,balance) values (5,5,'current',5000.00);
+insert into accounts( account_id,customer_id,account_type,balance) values (5,5,'current',5000.00)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (HR.SYS_C007529) violated - parent key not 
+found 
+
+
+SQL> insert into customers(customer_id,Name,Email,Phone,Address) values(5,'adity dude','ad@gmail,com','4455665859','56 wai');
+
+1 row created.
+
+SQL> insert into accounts( account_id,customer_id,account_type,balance) values (5,5,'current',5000.00);
+
+1 row created.
+
+SQL> CREATE TABLE transactions (
+  2    transaction_id NUMBER PRIMARY KEY,
+  3    account_id NUMBER,
+  4    tDate DATE NOT NULL,
+  5    amount NUMBER NOT NULL CHECK (amount >= 0),
+  6    transaction_type VARCHAR2(20) NOT NULL,
+  7    FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+  8  );
+
+Table created.
+
+SQL> insert into transactions (transaction_id,account_id,t_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit');
+insert into transactions (transaction_id,account_id,t_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit')
+                                                    *
+ERROR at line 1:
+ORA-00904: "T_DATE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into transactions (transaction_id,account_id,to_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit')
+SQL> /
+insert into transactions (transaction_id,account_id,to_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit')
+                                                    *
+ERROR at line 1:
+ORA-00904: "TO_DATE": invalid identifier 
+
+
+SQL>  insert into transactions (transaction_id,account_id,t_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit');
+ insert into transactions (transaction_id,account_id,t_date,amount,transaction_type) values(1,1,TO_DATE('2023-01-01','YYYY-MM-DD'),500.00,'Deposit')
+                                                     *
+ERROR at line 1:
+ORA-00904: "T_DATE": invalid identifier 
+
+
+SQL> INSERT INTO transactions (transaction_id, account_id, tDate, amount, transaction_type)
+  2  VALUES (1, 1, TO_DATE('2023-01-01', 'YYYY-MM-DD'), 500.00, 'Deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions (transaction_id, account_id, tDate, amount, transaction_type)
+  2  VALUES (2, 2, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 1000.00, 'Deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions (transaction_id, account_id, tDate, amount, transaction_type)
+  2  VALUES (3, 3, TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1500.00, 'Deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions (transaction_id, account_id, tDate, amount, transaction_type)
+  2  VALUES (4, 4, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 2000.00, 'Deposit');
+
+1 row created.
+
+SQL> INSERT INTO transactions (transaction_id, account_id, tDate, amount, transaction_type)
+  2  VALUES (5, 5, TO_DATE('2021-01-01', 'YYYY-MM-DD'), 2500.00, 'Deposit');
+
+1 row created.
+
+SQL> spool off;

@@ -1,0 +1,316 @@
+SQL> select upper(name) as uppercase_name from customers;
+
+UPPERCASE_NAME                                                                  
+--------------------------------------------------------------------------------
+ATHARV YADAV                                                                    
+SATISH GHUGE                                                                    
+AJAY KEDIA                                                                      
+HARSHAD MEHTA                                                                   
+ADITY DUDE                                                                      
+
+SQL> select lower(name) as lowercase_name from customers;
+
+LOWERCASE_NAME                                                                  
+--------------------------------------------------------------------------------
+atharv yadav                                                                    
+satish ghuge                                                                    
+ajay kedia                                                                      
+harshad mehta                                                                   
+adity dude                                                                      
+
+SQL> select substring(name,1,1) as initial from customers
+  2  /
+select substring(name,1,1) as initial from customers
+                              *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SUBSTR(name, 1, 1) AS initial
+  2  FROM customers;
+SELECT SUBSTR(name, 1, 1) AS initial
+                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select coalesce(phone,'not available') as phone from customers;
+
+PHONE                                                                           
+---------------                                                                 
+7894561230                                                                      
+7894561230                                                                      
+5254789846                                                                      
+7584658944                                                                      
+4455665859                                                                      
+
+SQL> select round(balance,2) as rounded_balance from accounts;
+
+ROUNDED_BALANCE                                                                 
+---------------                                                                 
+           1500                                                                 
+           2000                                                                 
+           2500                                                                 
+           3000                                                                 
+           5000                                                                 
+
+SQL> select to_char(balance,'9,999,999.99') as formatted_balance from accounts;
+
+FORMATTED_BAL                                                                   
+-------------                                                                   
+     1,500.00                                                                   
+     2,000.00                                                                   
+     2,500.00                                                                   
+     3,000.00                                                                   
+     5,000.00                                                                   
+
+SQL> select extract(year from tdate) as year from transactions;
+
+      YEAR                                                                      
+----------                                                                      
+      2021                                                                      
+      2022                                                                      
+      2023                                                                      
+      2024                                                                      
+      2025                                                                      
+
+SQL> select extract (month form tdate) as month from transactions;
+select extract (month form tdate) as month from transactions
+                      *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select extract (month from tdate) as month from transactions;
+
+     MONTH                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> select extract(day from tdate) as day from transactions;
+
+       DAY                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> select length(name)
+  2  as name_length from customers;
+
+NAME_LENGTH                                                                     
+-----------                                                                     
+         12                                                                     
+         12                                                                     
+         10                                                                     
+         13                                                                     
+         10                                                                     
+
+SQL> select tdate+interval '7' day as new_date from transactions;
+
+NEW_DATE                                                                        
+---------                                                                       
+08-JAN-21                                                                       
+08-JAN-22                                                                       
+08-JAN-23                                                                       
+08-JAN-24                                                                       
+08-JAN-25                                                                       
+
+SQL> select to_char(tdate,'dd-mm-yyyy') as formatted_date from transactions;
+
+FORMATTED_                                                                      
+----------                                                                      
+01-01-2021                                                                      
+01-01-2022                                                                      
+01-01-2023                                                                      
+01-01-2024                                                                      
+01-01-2025                                                                      
+
+SQL> select initcap(name) as capitalized_name from customers;
+
+CAPITALIZED_NAME                                                                
+--------------------------------------------------------------------------------
+Atharv Yadav                                                                    
+Satish Ghuge                                                                    
+Ajay Kedia                                                                      
+Harshad Mehta                                                                   
+Adity Dude                                                                      
+
+SQL> select ABS(balance) as absolute_balance from accounts;
+
+ABSOLUTE_BALANCE                                                                
+----------------                                                                
+            1500                                                                
+            2000                                                                
+            2500                                                                
+            3000                                                                
+            5000                                                                
+
+SQL> select LPAD( Account_ID,10,'o') as padded_account_id from accounts;
+
+PADDED_ACCOUNT_ID                                                               
+----------------------------------------                                        
+ooooooooo1                                                                      
+ooooooooo2                                                                      
+ooooooooo3                                                                      
+ooooooooo4                                                                      
+ooooooooo5                                                                      
+
+SQL> select trim(name)as trimmed_name from customers;
+
+TRIMMED_NAME                                                                    
+--------------------------------------------------------------------------------
+Atharv yadav                                                                    
+satish ghuge                                                                    
+ajay kedia                                                                      
+harshad mehta                                                                   
+adity dude                                                                      
+
+SQL> select noe() as current_date_time;
+select noe() as current_date_time
+                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select now() as current_date_time;
+select now() as current_date_time
+                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select case when email like '%@gmail.com' then 'gmail' else 'other' end as email_type from customers;
+
+EMAIL                                                                           
+-----                                                                           
+other                                                                           
+other                                                                           
+other                                                                           
+other                                                                           
+other                                                                           
+
+SQL> select right(phone,4) as last_4_digits from customers;
+select right(phone,4) as last_4_digits from customers
+       *
+ERROR at line 1:
+ORA-00904: "RIGHT": invalid identifier 
+
+
+SQL> SELECT RIGHT(Phone, 4) AS Last4Digits FROM Customers;
+SELECT RIGHT(Phone, 4) AS Last4Digits FROM Customers
+       *
+ERROR at line 1:
+ORA-00904: "RIGHT": invalid identifier 
+
+
+SQL> SELECT SUBSTR(Phone, -4) AS Last4Digits FROM Customers;
+
+LAST4DIGITS                                                                     
+----------------                                                                
+1230                                                                            
+1230                                                                            
+9846                                                                            
+8944                                                                            
+5859                                                                            
+
+SQL> select current_date as current_date;
+select current_date as current_date
+                                  *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select cast(balance as char) as balance_as_string from accounts;
+select cast(balance as char) as balance_as_string from accounts
+            *
+ERROR at line 1:
+ORA-25137: Data value out of range 
+
+
+SQL> select floor(rand()*1000) as random_number ;
+select floor(rand()*1000) as random_number 
+                                          *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select concat(account_type,'',balance) as account_details from accounts;
+select concat(account_type,'',balance) as account_details from accounts
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> create bitmap index idx_account_type_bitmap on accounts(account_type);
+create bitmap index idx_account_type_bitmap on accounts(account_type)
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Bit-mapped indexes 
+
+
+SQL> create bitmap index idx_accounttype_bitmap on accounts(account_type);
+create bitmap index idx_accounttype_bitmap on accounts(account_type)
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Bit-mapped indexes 
+
+
+SQL> CREATE INDEX idx_accounttype_btree ON accounts(account_type);
+
+Index created.
+
+SQL> select concat(name,'owes',balance) as customer_debt
+  2  from customers
+  3  INNER JOIN accounts a
+  4  ON c.customer_id = a.customer_id;
+select concat(name,'owes',balance) as customer_debt
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select concat(name,balance) as customer_debt
+  2  from customers
+  3  INNER JOIN accounts a
+  4* ON c.customer_id = a.customer_id
+SQL> /
+ON c.customer_id = a.customer_id
+   *
+ERROR at line 4:
+ORA-00904: "C"."CUSTOMER_ID": invalid identifier 
+
+
+SQL> SELECT CONCAT(name, balance) AS customer_debt
+  2  FROM customers
+  3  INNER JOIN accounts a
+  4  ON c.customer_id = a.customer_id;
+ON c.customer_id = a.customer_id
+   *
+ERROR at line 4:
+ORA-00904: "C"."CUSTOMER_ID": invalid identifier 
+
+
+SQL> SELECT CONCAT(c.name, a.balance) AS customer_debt
+  2  FROM customers c
+  3  INNER JOIN accounts a
+  4  ON c.customer_id = a.customer_id;
+
+CUSTOMER_DEBT                                                                   
+--------------------------------------------------------------------------------
+Atharv yadav1500                                                                
+satish ghuge2000                                                                
+ajay kedia2500                                                                  
+harshad mehta3000                                                               
+adity dude5000                                                                  
+
+SQL> spool off;

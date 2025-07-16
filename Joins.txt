@@ -1,0 +1,1314 @@
+SQL> select c.customer_id,c.name,a.account_id,a.account_type,a.balance
+  2  from customers c
+  3  cross join accounts a;
+select c.customer_id,c.name,a.account_id,a.account_type,a.balance
+                                                        *
+ERROR at line 1:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C           
+---------- ----------- -------------------- --------------- ---------           
+         1           1 saving                          1500                     
+         2           2 saving                          2500                     
+         3           3 saving                          2500                     
+         4           4 current                         3000                     
+         5           5 current                         5000                     
+         6           6 checking                        5000                     
+
+6 rows selected.
+
+SQL> select c.customer_id,c.name,a.account_id,a.account_type,a.account_balance
+  2  from customers c
+  3  cross join accounts a;
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          1                                                                     
+Atharv yadav                                                                    
+         1 saving                          1500                                 
+                                                                                
+          2                                                                     
+satish ghuge                                                                    
+         1 saving                          1500                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          3                                                                     
+ajay kedia                                                                      
+         1 saving                          1500                                 
+                                                                                
+          4                                                                     
+harshad mehta                                                                   
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         1 saving                          1500                                 
+                                                                                
+          5                                                                     
+adity dude                                                                      
+         1 saving                          1500                                 
+                                                                                
+          6                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+akash yadav                                                                     
+         1 saving                          1500                                 
+                                                                                
+          7                                                                     
+anuja dokh                                                                      
+         1 saving                          1500                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          8                                                                     
+kaustub dini                                                                    
+         1 saving                          1500                                 
+                                                                                
+          1                                                                     
+Atharv yadav                                                                    
+         2 saving                          2500                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          2                                                                     
+satish ghuge                                                                    
+         2 saving                          2500                                 
+                                                                                
+          3                                                                     
+ajay kedia                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         2 saving                          2500                                 
+                                                                                
+          4                                                                     
+harshad mehta                                                                   
+         2 saving                          2500                                 
+                                                                                
+          5                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+adity dude                                                                      
+         2 saving                          2500                                 
+                                                                                
+          6                                                                     
+akash yadav                                                                     
+         2 saving                          2500                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          7                                                                     
+anuja dokh                                                                      
+         2 saving                          2500                                 
+                                                                                
+          8                                                                     
+kaustub dini                                                                    
+         2 saving                          2500                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          1                                                                     
+Atharv yadav                                                                    
+         3 saving                          2500                                 
+                                                                                
+          2                                                                     
+satish ghuge                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         3 saving                          2500                                 
+                                                                                
+          3                                                                     
+ajay kedia                                                                      
+         3 saving                          2500                                 
+                                                                                
+          4                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+harshad mehta                                                                   
+         3 saving                          2500                                 
+                                                                                
+          5                                                                     
+adity dude                                                                      
+         3 saving                          2500                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          6                                                                     
+akash yadav                                                                     
+         3 saving                          2500                                 
+                                                                                
+          7                                                                     
+anuja dokh                                                                      
+         3 saving                          2500                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          8                                                                     
+kaustub dini                                                                    
+         3 saving                          2500                                 
+                                                                                
+          1                                                                     
+Atharv yadav                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         4 current                         3000                                 
+                                                                                
+          2                                                                     
+satish ghuge                                                                    
+         4 current                         3000                                 
+                                                                                
+          3                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+ajay kedia                                                                      
+         4 current                         3000                                 
+                                                                                
+          4                                                                     
+harshad mehta                                                                   
+         4 current                         3000                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          5                                                                     
+adity dude                                                                      
+         4 current                         3000                                 
+                                                                                
+          6                                                                     
+akash yadav                                                                     
+         4 current                         3000                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          7                                                                     
+anuja dokh                                                                      
+         4 current                         3000                                 
+                                                                                
+          8                                                                     
+kaustub dini                                                                    
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         4 current                         3000                                 
+                                                                                
+          1                                                                     
+Atharv yadav                                                                    
+         5 current                         5000                                 
+                                                                                
+          2                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+satish ghuge                                                                    
+         5 current                         5000                                 
+                                                                                
+          3                                                                     
+ajay kedia                                                                      
+         5 current                         5000                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          4                                                                     
+harshad mehta                                                                   
+         5 current                         5000                                 
+                                                                                
+          5                                                                     
+adity dude                                                                      
+         5 current                         5000                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          6                                                                     
+akash yadav                                                                     
+         5 current                         5000                                 
+                                                                                
+          7                                                                     
+anuja dokh                                                                      
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         5 current                         5000                                 
+                                                                                
+          8                                                                     
+kaustub dini                                                                    
+         5 current                         5000                                 
+                                                                                
+          1                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+Atharv yadav                                                                    
+         6 checking                        5000                                 
+                                                                                
+          2                                                                     
+satish ghuge                                                                    
+         6 checking                        5000                                 
+                                                                                
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+          3                                                                     
+ajay kedia                                                                      
+         6 checking                        5000                                 
+                                                                                
+          4                                                                     
+harshad mehta                                                                   
+         6 checking                        5000                                 
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+                                                                                
+          5                                                                     
+adity dude                                                                      
+         6 checking                        5000                                 
+                                                                                
+          6                                                                     
+akash yadav                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+         6 checking                        5000                                 
+                                                                                
+          7                                                                     
+anuja dokh                                                                      
+         6 checking                        5000                                 
+                                                                                
+          8                                                                     
+
+CUSTOMER_ID                                                                     
+-----------                                                                     
+NAME                                                                            
+--------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                 
+---------- -------------------- ---------------                                 
+kaustub dini                                                                    
+         6 checking                        5000                                 
+                                                                                
+
+48 rows selected.
+
+SQL> set pagesize 200;
+SQL> set linesize 200;
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                 ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                        
+----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- ---------------                                        
+          1 Atharv yadav                                                                                                  1 saving                          1500                                        
+          2 satish ghuge                                                                                                  1 saving                          1500                                        
+          3 ajay kedia                                                                                                    1 saving                          1500                                        
+          4 harshad mehta                                                                                                 1 saving                          1500                                        
+          5 adity dude                                                                                                    1 saving                          1500                                        
+          6 akash yadav                                                                                                   1 saving                          1500                                        
+          7 anuja dokh                                                                                                    1 saving                          1500                                        
+          8 kaustub dini                                                                                                  1 saving                          1500                                        
+          1 Atharv yadav                                                                                                  2 saving                          2500                                        
+          2 satish ghuge                                                                                                  2 saving                          2500                                        
+          3 ajay kedia                                                                                                    2 saving                          2500                                        
+          4 harshad mehta                                                                                                 2 saving                          2500                                        
+          5 adity dude                                                                                                    2 saving                          2500                                        
+          6 akash yadav                                                                                                   2 saving                          2500                                        
+          7 anuja dokh                                                                                                    2 saving                          2500                                        
+          8 kaustub dini                                                                                                  2 saving                          2500                                        
+          1 Atharv yadav                                                                                                  3 saving                          2500                                        
+          2 satish ghuge                                                                                                  3 saving                          2500                                        
+          3 ajay kedia                                                                                                    3 saving                          2500                                        
+          4 harshad mehta                                                                                                 3 saving                          2500                                        
+          5 adity dude                                                                                                    3 saving                          2500                                        
+          6 akash yadav                                                                                                   3 saving                          2500                                        
+          7 anuja dokh                                                                                                    3 saving                          2500                                        
+          8 kaustub dini                                                                                                  3 saving                          2500                                        
+          1 Atharv yadav                                                                                                  4 current                         3000                                        
+          2 satish ghuge                                                                                                  4 current                         3000                                        
+          3 ajay kedia                                                                                                    4 current                         3000                                        
+          4 harshad mehta                                                                                                 4 current                         3000                                        
+          5 adity dude                                                                                                    4 current                         3000                                        
+          6 akash yadav                                                                                                   4 current                         3000                                        
+          7 anuja dokh                                                                                                    4 current                         3000                                        
+          8 kaustub dini                                                                                                  4 current                         3000                                        
+          1 Atharv yadav                                                                                                  5 current                         5000                                        
+          2 satish ghuge                                                                                                  5 current                         5000                                        
+          3 ajay kedia                                                                                                    5 current                         5000                                        
+          4 harshad mehta                                                                                                 5 current                         5000                                        
+          5 adity dude                                                                                                    5 current                         5000                                        
+          6 akash yadav                                                                                                   5 current                         5000                                        
+          7 anuja dokh                                                                                                    5 current                         5000                                        
+          8 kaustub dini                                                                                                  5 current                         5000                                        
+          1 Atharv yadav                                                                                                  6 checking                        5000                                        
+          2 satish ghuge                                                                                                  6 checking                        5000                                        
+          3 ajay kedia                                                                                                    6 checking                        5000                                        
+          4 harshad mehta                                                                                                 6 checking                        5000                                        
+          5 adity dude                                                                                                    6 checking                        5000                                        
+          6 akash yadav                                                                                                   6 checking                        5000                                        
+          7 anuja dokh                                                                                                    6 checking                        5000                                        
+          8 kaustub dini                                                                                                  6 checking                        5000                                        
+
+48 rows selected.
+
+SQL> select c.customer_id,c.name,t.transaction_id,t.transaction_type,t.amount
+  2  from customers c
+  3  cross join transactions t
+  4  where t.transaction_type = 'Deposit';
+
+no rows selected
+
+SQL> select a.account_id, a.account_type,t.transaction_id, t.transaction_type,t.amount
+  2  from accounts a
+  3  cross join transactionst
+  4  where a.account_type ='savings' and t.transaction_type = 'transfer';
+cross join transactionst
+           *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select a.account_id, a.account_type,t.transaction_id, t.transaction_type,t.amount
+  2  from accounts a
+  3  cross join transactions t
+  4* where a.account_type ='savings' and t.transaction_type = 'transfer'
+SQL> /
+
+no rows selected
+
+SQL> select c.customer_id, c.name, c.account_id, a.account_type, a.balance
+  2  from customers c
+  3  inner join accounts a
+  4  on c.customer_id = a.customer_id;
+select c.customer_id, c.name, c.account_id, a.account_type, a.balance
+                                                            *
+ERROR at line 1:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select c.customer_id, c.name, c.account_id, a.account_type, a.account_balance
+  2  from customers c
+  3  inner join accounts a
+  4* on c.customer_id = a.customer_id
+SQL> /
+select c.customer_id, c.name, c.account_id, a.account_type, a.account_balance
+                              *
+ERROR at line 1:
+ORA-00904: "C"."ACCOUNT_ID": invalid identifier 
+
+
+SQL> select * from accounts;
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C                                                                                                                                   
+---------- ----------- -------------------- --------------- ---------                                                                                                                                   
+         1           1 saving                          1500                                                                                                                                             
+         2           2 saving                          2500                                                                                                                                             
+         3           3 saving                          2500                                                                                                                                             
+         4           4 current                         3000                                                                                                                                             
+         5           5 current                         5000                                                                                                                                             
+         6           6 checking                        5000                                                                                                                                             
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from accounts
+SQL> /
+
+ACCOUNT_ID CUSTOMER_ID ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C                                                                                                                                   
+---------- ----------- -------------------- --------------- ---------                                                                                                                                   
+         1           1 saving                          1500                                                                                                                                             
+         2           2 saving                          2500                                                                                                                                             
+         3           3 saving                          2500                                                                                                                                             
+         4           4 current                         3000                                                                                                                                             
+         5           5 current                         5000                                                                                                                                             
+         6           6 checking                        5000                                                                                                                                             
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select a.customer_id, c.name, c.account_id, a.account_type, a.account_balance
+  2   from customers c
+  3   inner join accounts a
+  4*  on c.customer_id = a.customer_id
+SQL> /
+ select a.customer_id, c.name, c.account_id, a.account_type, a.account_balance
+                               *
+ERROR at line 1:
+ORA-00904: "C"."ACCOUNT_ID": invalid identifier 
+
+
+SQL> SELECT a.customer_id, c.name, a.account_id, a.account_type, a.account_balance
+  2  FROM customers c
+  3  INNER JOIN accounts a
+  4  ON c.customer_id = a.customer_id;
+
+CUSTOMER_ID NAME                                                                                                 ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                        
+----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- ---------------                                        
+          1 Atharv yadav                                                                                                  1 saving                          1500                                        
+          2 satish ghuge                                                                                                  2 saving                          2500                                        
+          3 ajay kedia                                                                                                    3 saving                          2500                                        
+          4 harshad mehta                                                                                                 4 current                         3000                                        
+          5 adity dude                                                                                                    5 current                         5000                                        
+          6 akash yadav                                                                                                   6 checking                        5000                                        
+
+6 rows selected.
+
+SQL> select c.customer_id,c.name, t.transaction_id,t.transaction_type,t.amount,t.date
+  2  from customers c
+  3  inner join accounts a
+  4  on c.customer_id = t.account_id;
+select c.customer_id,c.name, t.transaction_id,t.transaction_type,t.amount,t.date
+                                                                            *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> SELECT c.customer_id, c.name, t.transaction_id, t.transaction_type, t.amount, t.t_date
+  2  FROM customers c
+  3  INNER JOIN accounts a ON c.customer_id = a.customer_id
+  4  INNER JOIN transactions t ON a.account_id = t.account_id;
+SELECT c.customer_id, c.name, t.transaction_id, t.transaction_type, t.amount, t.t_date
+                                                                              *
+ERROR at line 1:
+ORA-00904: "T"."T_DATE": invalid identifier 
+
+
+SQL> select c.customer_id, c.name,a.account_id,a.account_type,a.balance
+  2  from customers c
+  3  inner join accounts a
+  4  on c.customer_id = a.customer_id
+  5  where a.balance >(
+  6  select avg(balance)
+  7  from accounts
+  8  where balance >1000
+  9  );
+where a.balance >(
+      *
+ERROR at line 5:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select c.customer_id, c.name,a.account_id,a.account_type,a.account_balance
+  2  from customers c
+  3  inner join accounts a
+  4  on c.customer_id = a.customer_id
+  5  where a.account_balance >(
+  6  select avg(account_balance)
+  7  from accounts
+  8  where account_balance >1000
+  9* )
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                 ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                        
+----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- ---------------                                        
+          5 adity dude                                                                                                    5 current                         5000                                        
+          6 akash yadav                                                                                                   6 checking                        5000                                        
+
+SQL> select c.customer_id, c.name,a.account_id,a.account_type,a.balance,
+  2  t.transaction_id, t.transaction_type,t.amount,t.date
+  3  from customers c
+  4  left join accounts a
+  5  on c.customer_id = a.customer_id
+  6  left join transactions t
+  7  on a.account_id = t.account_id;
+t.transaction_id, t.transaction_type,t.amount,t.date
+                                                *
+ERROR at line 2:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> SELECT c.customer_id, c.name, a.account_id, a.account_type, a.balance,
+  2         t.transaction_id, t.transaction_type, t.amount, t."date"
+  3  FROM customers c
+  4  LEFT JOIN accounts a ON c.customer_id = a.customer_id
+  5  LEFT JOIN transactions t ON a.account_id = t.account_id;
+       t.transaction_id, t.transaction_type, t.amount, t."date"
+                                                       *
+ERROR at line 2:
+ORA-00904: "T"."date": invalid identifier 
+
+
+SQL> select c.customer_id,c.name
+  2  from customers c
+  3  left join accounts a
+  4  on c.customer_id = a.customer_id
+  5  left join transactions t
+  6  on a.account_id = a.customer_id
+  7  and
+  8  t.tdate >= sysdate-interval '1' year
+  9  where t.transaction_id is null;
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+          8 kaustub dini                                                                                                                                                                                
+          7 anuja dokh                                                                                                                                                                                  
+
+SQL> select a.account_id,a.account_Type,a.balance
+  2  from accounts a
+  3  left join
+  4  transactions t
+  5  on a.account_id = t.account_id
+  6  where t.transaction_id is null;
+select a.account_id,a.account_Type,a.balance
+                                   *
+ERROR at line 1:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select a.account_id,a.account_Type,a.account_balance
+  2  from accounts a
+  3  left join
+  4  transactions t
+  5  on a.account_id = t.account_id
+  6* where t.transaction_id is null
+SQL> /
+
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                                                                                                                                         
+---------- -------------------- ---------------                                                                                                                                                         
+         6 checking                        5000                                                                                                                                                         
+
+SQL> SELECT c.CustomerID, c.Name, a.AccountID, a.AccountType, a.Balance, t.TransactionID, t.TransactionType, t.Amount, t.tDate
+  2  FROM Customers c
+  3  LEFT JOIN Accounts a
+  4  ON c.CustomerID = a.CustomerID
+  5  LEFT JOIN Transactions t
+  6  ON a.AccountID = t.AccountID;
+ON c.CustomerID = a.CustomerID
+                  *
+ERROR at line 4:
+ORA-00904: "A"."CUSTOMERID": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT c.Customer_ID, c.Name, a.Account_ID, a.Account_Type, a.account_Balance, t.Transaction_ID, t.Transaction_Type, t.Amount, t.tDate
+  2  FROM Customers c
+  3  LEFT JOIN Accounts a
+  4  ON c.Customer_ID = a.Customer_ID
+  5  LEFT JOIN Transactions t
+  6* ON a.Account_ID = t.Account_ID
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                 ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE TRANSACTION_ID TRANSACTION_TYPE        
+----------- ---------------------------------------------------------------------------------------------------- ---------- -------------------- --------------- -------------- --------------------    
+    AMOUNT TDATE                                                                                                                                                                                        
+---------- ---------                                                                                                                                                                                    
+          1 Atharv yadav                                                                                                  1 saving                          1500              1 deposit                 
+       500 01-JAN-21                                                                                                                                                                                    
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                  2 saving                          2500              2 deposit                 
+      1000 01-JAN-22                                                                                                                                                                                    
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                    3 saving                          2500              3 deposit                 
+      1500 01-JAN-23                                                                                                                                                                                    
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                 4 current                         3000              4 deposit                 
+      2000 01-JAN-24                                                                                                                                                                                    
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                    5 current                         5000              5 deposit                 
+       200 01-JAN-25                                                                                                                                                                                    
+                                                                                                                                                                                                        
+          7 anuja dokh                                                                                                                                                                                  
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini                                                                                                                                                                                
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          6 akash yadav                                                                                                   6 checking                        5000                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> select c.customer_id,c.name,c.email,c.phone,c.address,a.account_id,a.account_type,a.balance
+  2  from customers c
+  3  left join accounts a
+  4  on c.customer_id= a.customer_id;
+select c.customer_id,c.name,c.email,c.phone,c.address,a.account_id,a.account_type,a.balance
+                                                                                  *
+ERROR at line 1:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select c.customer_id,c.name,c.email,c.phone,c.address,a.account_id,a.account_type,a.account_balance
+  2  from customers c
+  3  left join accounts a
+  4* on c.customer_id= a.customer_id
+SQL> /
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- --------------------                                                                               
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE                                                                                                                                                         
+---------- -------------------- ---------------                                                                                                                                                         
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+         1 saving                          1500                                                                                                                                                         
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+         2 saving                          2500                                                                                                                                                         
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+         3 saving                          2500                                                                                                                                                         
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+         4 current                         3000                                                                                                                                                         
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+         5 current                         5000                                                                                                                                                         
+                                                                                                                                                                                                        
+          6 akash yadav                                                                                                                                                                                 
+22ak@gmail.com                                                                                       85698745638                                                                                        
+15 satara                                                                                                                                                                                               
+         6 checking                        5000                                                                                                                                                         
+                                                                                                                                                                                                        
+          7 anuja dokh                                                                                                                                                                                  
+15ad@gmail.com                                                                                       3888459637                                                                                         
+75 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+          8 kaustub dini                                                                                                                                                                                
+12kd@gmail.com                                                                                       3865457637                                                                                         
+78 mulashi                                                                                                                                                                                              
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> select c.customer_id,c.name,a.account_id,a.account_type
+  2  from customers c
+  3  join
+  4  accounts a
+  5  on c.customer_id = a.customer_id;
+
+CUSTOMER_ID NAME                                                                                                 ACCOUNT_ID ACCOUNT_TYPE                                                                
+----------- ---------------------------------------------------------------------------------------------------- ---------- --------------------                                                        
+          1 Atharv yadav                                                                                                  1 saving                                                                      
+          2 satish ghuge                                                                                                  2 saving                                                                      
+          3 ajay kedia                                                                                                    3 saving                                                                      
+          4 harshad mehta                                                                                                 4 current                                                                     
+          5 adity dude                                                                                                    5 current                                                                     
+          6 akash yadav                                                                                                   6 checking                                                                    
+
+6 rows selected.
+
+SQL> select c.customer_id,c.name,a.account_id,a.acount_type,t.transaction_id,t.transaction_type,t.amount
+  2  from customers c,accounts a,transactions t
+  3  where c.customer_id = a.customer_id
+  4  and a.account_id = t.account_id
+  5  and
+  6  a.account_type = 'checking'
+  7  and t.transaction_type = 'deposit';
+select c.customer_id,c.name,a.account_id,a.acount_type,t.transaction_id,t.transaction_type,t.amount
+                                         *
+ERROR at line 1:
+ORA-00904: "A"."ACOUNT_TYPE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select c.customer_id,c.name,a.account_id,a.account_type,t.transaction_id,t.transaction_type,t.amount
+  2  from customers c,accounts a,transactions t
+  3  where c.customer_id = a.customer_id
+  4  and a.account_id = t.account_id
+  5  and
+  6  a.account_type = 'checking'
+  7* and t.transaction_type = 'deposit'
+SQL> /
+
+no rows selected
+
+SQL> SELECT Customers.Name, Transactions.TransactionID, Transactions.Amount, Transactions.tDate FROM Customers, Accounts, Transactions
+  2  WHERE Customers.CustomerID = Accounts.CustomerID
+  3  AND
+  4  Accounts.AccountID = Transactions.AccountID
+  5  AND
+  6  Transactions.Amount = Accounts.Balance;
+Transactions.Amount = Accounts.Balance
+                      *
+ERROR at line 6:
+ORA-00904: "ACCOUNTS"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT Customers.Name, Transactions.Transaction_ID, Transactions.Amount, Transactions.tDate
+  2   FROM Customers, Accounts, Transactions
+  3  WHERE Customers.Customer_ID = Accounts.Customer_ID
+  4  AND
+  5  Accounts.Account_ID = Transactions.Account_ID
+  6  AND
+  7* Transactions.Amount = Accounts.account_Balance
+SQL> /
+
+no rows selected
+
+SQL> SELECT Customers.CustomerID, Customers.Name, Customers.Email, Accounts.AccountID, Accounts.AccountType, Accounts.Balance, Transactions.tDate
+  2  FROM Customers, Accounts, Transactions
+  3  WHERE Customers.CustomerID = Accounts.CustomerID
+  4  AND
+  5  Accounts.AccountID = Transactions.AccountID
+  6  AND
+  7  TRUNC(Accounts.CreatedDate) = TRUNC(Transactions.tDate);
+TRUNC(Accounts.CreatedDate) = TRUNC(Transactions.tDate)
+      *
+ERROR at line 7:
+ORA-00904: "ACCOUNTS"."CREATEDDATE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT Customers.Customer_ID, Customers.Name, Customers.Email, Accounts.Account_ID, Accounts.Account_Type, Accounts.account_Balance, Transactions.tDate
+  2  FROM Customers, Accounts, Transactions
+  3  WHERE Customers.Customer_ID = Accounts.Customer_ID
+  4  AND
+  5  Accounts.Account_ID = Transactions.Account_ID
+  6  AND
+  7* TRUNC(Accounts.Created_Date) = TRUNC(Transactions.tDate)
+SQL> /
+TRUNC(Accounts.Created_Date) = TRUNC(Transactions.tDate)
+      *
+ERROR at line 7:
+ORA-00904: "ACCOUNTS"."CREATED_DATE": invalid identifier 
+
+
+SQL> SELECT c.CustomerID, c.Name, c.Email, t.TransactionID,t.Amount,t.tDate
+  2  FROM Customers c, Accounts a, Transactions t
+  3  WHERE
+  4  c.CustomerID = a.CustomerID
+  5  AND a.AccountID = t.AccountID
+  6  AND t.Amount = a.Balance;
+AND t.Amount = a.Balance
+               *
+ERROR at line 6:
+ORA-00904: "A"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT c.Customer_ID, c.Name, c.Email, t.Transaction_ID,t.Amount,t.tDate
+  2  FROM Customers c, Accounts a, Transactions t
+  3  WHERE
+  4  c.Customer_ID = a.Customer_ID
+  5  AND a.Account_ID = t.Account_ID
+  6* AND t.Amount = a.account_Balance
+SQL> /
+
+no rows selected
+
+SQL> select * from customers
+  2  natural join accounts;
+
+CUSTOMER_ID NAME                                                                                                                                                                                        
+----------- ----------------------------------------------------------------------------------------------------                                                                                        
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- --------------------                                                                               
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DATE_OF_B ACCOUNT_ID ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C                                                                                                                                     
+--------- ---------- -------------------- --------------- ---------                                                                                                                                     
+          1 Atharv yadav                                                                                                                                                                                
+av12@gmail,com                                                                                       7894561230                                                                                         
+123 satara                                                                                                                                                                                              
+01-JAN-00          1 saving                          1500                                                                                                                                               
+                                                                                                                                                                                                        
+          2 satish ghuge                                                                                                                                                                                
+sg@gmail,com                                                                                         7894561230                                                                                         
+12 sambhajinagar                                                                                                                                                                                        
+01-JAN-00          2 saving                          2500                                                                                                                                               
+                                                                                                                                                                                                        
+          3 ajay kedia                                                                                                                                                                                  
+ak@gmail,com                                                                                         5254789846                                                                                         
+21 mumbai                                                                                                                                                                                               
+01-JAN-00          3 saving                          2500                                                                                                                                               
+                                                                                                                                                                                                        
+          4 harshad mehta                                                                                                                                                                               
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+01-JAN-00          4 current                         3000                                                                                                                                               
+                                                                                                                                                                                                        
+          5 adity dude                                                                                                                                                                                  
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+01-JAN-00          5 current                         5000                                                                                                                                               
+                                                                                                                                                                                                        
+          6 akash yadav                                                                                                                                                                                 
+22ak@gmail.com                                                                                       85698745638                                                                                        
+15 satara                                                                                                                                                                                               
+01-JAN-00          6 checking                        5000                                                                                                                                               
+                                                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> select * from transactions
+  2  natural join accounts;
+
+ACCOUNT_ID TRANSACTION_ID TDATE         AMOUNT TRANSACTION_TYPE     CUSTOMER_ID ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C                                                                          
+---------- -------------- --------- ---------- -------------------- ----------- -------------------- --------------- ---------                                                                          
+         1              1 01-JAN-21        500 deposit                        1 saving                          1500                                                                                    
+         2              2 01-JAN-22       1000 deposit                        2 saving                          2500                                                                                    
+         3              3 01-JAN-23       1500 deposit                        3 saving                          2500                                                                                    
+         4              4 01-JAN-24       2000 deposit                        4 current                         3000                                                                                    
+         5              5 01-JAN-25        200 deposit                        5 current                         5000                                                                                    
+
+SQL> select name, account_balance
+  2  from customers
+  3  natural join accounts;
+
+NAME                                                                                                 ACCOUNT_BALANCE                                                                                    
+---------------------------------------------------------------------------------------------------- ---------------                                                                                    
+Atharv yadav                                                                                                    1500                                                                                    
+satish ghuge                                                                                                    2500                                                                                    
+ajay kedia                                                                                                      2500                                                                                    
+harshad mehta                                                                                                   3000                                                                                    
+adity dude                                                                                                      5000                                                                                    
+akash yadav                                                                                                     5000                                                                                    
+
+6 rows selected.
+
+SQL> select name,amount
+  2  from customers
+  3  natural join accounts
+  4  natural join transations
+  5  /
+natural join transations
+             *
+ERROR at line 4:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select name,amount
+  2  from customers
+  3  natural join accounts
+  4* natural join transactions
+SQL> /
+
+NAME                                                                                                     AMOUNT                                                                                         
+---------------------------------------------------------------------------------------------------- ----------                                                                                         
+Atharv yadav                                                                                                500                                                                                         
+satish ghuge                                                                                               1000                                                                                         
+ajay kedia                                                                                                 1500                                                                                         
+harshad mehta                                                                                              2000                                                                                         
+adity dude                                                                                                  200                                                                                         
+
+SQL> select *
+  2  from customers
+  3  natural join accounts
+  4  natural join transactions
+  5  where account_type in('savings','current');
+
+ACCOUNT_ID CUSTOMER_ID NAME                                                                                                                                                                             
+---------- ----------- ----------------------------------------------------------------------------------------------------                                                                             
+EMAIL                                                                                                PHONE                                                                                              
+---------------------------------------------------------------------------------------------------- --------------------                                                                               
+ADDRESS                                                                                                                                                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DATE_OF_B ACCOUNT_TYPE         ACCOUNT_BALANCE ACCOUNT_C TRANSACTION_ID TDATE         AMOUNT TRANSACTION_TYPE                                                                                           
+--------- -------------------- --------------- --------- -------------- --------- ---------- --------------------                                                                                       
+         4           4 harshad mehta                                                                                                                                                                    
+hm@gmail,com                                                                                         7584658944                                                                                         
+23 south mumbai                                                                                                                                                                                         
+01-JAN-00 current                         3000                        4 01-JAN-24       2000 deposit                                                                                                    
+                                                                                                                                                                                                        
+         5           5 adity dude                                                                                                                                                                       
+ad@gmail,com                                                                                         4455665859                                                                                         
+56 wai                                                                                                                                                                                                  
+01-JAN-00 current                         5000                        5 01-JAN-25        200 deposit                                                                                                    
+                                                                                                                                                                                                        
+
+SQL> select c1.customer_id, c1.name,c1.phone
+  2  from customers c1
+  3  join customers c2
+  4  on c1.phone = c2.phone
+  5  where c1.customer_id <> c2.customer_id;
+
+CUSTOMER_ID NAME                                                                                                 PHONE                                                                                  
+----------- ---------------------------------------------------------------------------------------------------- --------------------                                                                   
+          1 Atharv yadav                                                                                         7894561230                                                                             
+          2 satish ghuge                                                                                         7894561230                                                                             
+
+SQL> select c1.customer_id,c1.name,c1.address
+  2  from customers c1
+  3  join customers c2
+  4  on c1.address = c2.address
+  5  where c1. customer_id <> c2.customer_id;
+
+no rows selected
+
+SQL> SELECT c1.CustomerID AS Customer1ID, c1.Name AS Customer1Name,
+  2  c2.CustomerID AS Customer2ID, c2.Name AS Customer2Name,
+  3  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) AS EmailDomain
+  4  FROM Customers c1
+  5  JOIN Customers c2
+  6  ON
+  7  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) = SUBSTR(c2.Email, INSTR(c2.Email, '@') + 1)
+  8  WHERE c1.CustomerID <> c2.CustomerID;
+WHERE c1.CustomerID <> c2.CustomerID
+                       *
+ERROR at line 8:
+ORA-00904: "C2"."CUSTOMERID": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT c1.Customer_ID AS Customer1_ID, c1.Name AS Customer1_Name,
+  2  c2.Customer_ID AS Customer2_ID, c2.Name AS Customer2_Name,
+  3  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) AS EmailDomain
+  4  FROM Customers c1
+  5  JOIN Customers c2
+  6  ON
+  7  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) = SUBSTR(c2.Email, INSTR(c2.Email, '@') + 1)
+  8* WHERE c1.CustomerID <> c2.Customer_ID
+SQL> /
+WHERE c1.CustomerID <> c2.Customer_ID
+      *
+ERROR at line 8:
+ORA-00904: "C1"."CUSTOMERID": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT c1.Customer_ID AS Customer1_ID, c1.Name AS Customer1_Name,
+  2  c2.Customer_ID AS Customer2_ID, c2.Name AS Customer2_Name,
+  3  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) AS EmailDomain
+  4  FROM Customers c1
+  5  JOIN Customers c2
+  6  ON
+  7  SUBSTR(c1.Email, INSTR(c1.Email, '@') + 1) = SUBSTR(c2.Email, INSTR(c2.Email, '@') + 1)
+  8* WHERE c1.Customer_ID <> c2.Customer_ID
+SQL> /
+
+CUSTOMER1_ID CUSTOMER1_NAME                                                                                       CUSTOMER2_ID                                                                          
+------------ ---------------------------------------------------------------------------------------------------- ------------                                                                          
+CUSTOMER2_NAME                                                                                                                                                                                          
+----------------------------------------------------------------------------------------------------                                                                                                    
+EMAILDOMAIN                                                                                                                                                                                             
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+           5 adity dude                                                                                                      1                                                                          
+Atharv yadav                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           4 harshad mehta                                                                                                   1                                                                          
+Atharv yadav                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           3 ajay kedia                                                                                                      1                                                                          
+Atharv yadav                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           2 satish ghuge                                                                                                    1                                                                          
+Atharv yadav                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           5 adity dude                                                                                                      2                                                                          
+satish ghuge                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           4 harshad mehta                                                                                                   2                                                                          
+satish ghuge                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           3 ajay kedia                                                                                                      2                                                                          
+satish ghuge                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           1 Atharv yadav                                                                                                    2                                                                          
+satish ghuge                                                                                                                                                                                            
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           5 adity dude                                                                                                      3                                                                          
+ajay kedia                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           4 harshad mehta                                                                                                   3                                                                          
+ajay kedia                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           2 satish ghuge                                                                                                    3                                                                          
+ajay kedia                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           1 Atharv yadav                                                                                                    3                                                                          
+ajay kedia                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           5 adity dude                                                                                                      4                                                                          
+harshad mehta                                                                                                                                                                                           
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           3 ajay kedia                                                                                                      4                                                                          
+harshad mehta                                                                                                                                                                                           
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           2 satish ghuge                                                                                                    4                                                                          
+harshad mehta                                                                                                                                                                                           
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           1 Atharv yadav                                                                                                    4                                                                          
+harshad mehta                                                                                                                                                                                           
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           4 harshad mehta                                                                                                   5                                                                          
+adity dude                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           3 ajay kedia                                                                                                      5                                                                          
+adity dude                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           2 satish ghuge                                                                                                    5                                                                          
+adity dude                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           1 Atharv yadav                                                                                                    5                                                                          
+adity dude                                                                                                                                                                                              
+gmail,com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           8 kaustub dini                                                                                                    6                                                                          
+akash yadav                                                                                                                                                                                             
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           7 anuja dokh                                                                                                      6                                                                          
+akash yadav                                                                                                                                                                                             
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           8 kaustub dini                                                                                                    7                                                                          
+anuja dokh                                                                                                                                                                                              
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           6 akash yadav                                                                                                     7                                                                          
+anuja dokh                                                                                                                                                                                              
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           7 anuja dokh                                                                                                      8                                                                          
+kaustub dini                                                                                                                                                                                            
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+           6 akash yadav                                                                                                     8                                                                          
+kaustub dini                                                                                                                                                                                            
+gmail.com                                                                                                                                                                                               
+                                                                                                                                                                                                        
+
+26 rows selected.
+
+SQL> SELECT a1.AccountID AS Account1ID, a1.CustomerID AS Customer1ID, a1.Balance,
+  2  a2.AccountID AS Account2ID, a2.CustomerID AS Customer2ID
+  3  FROM Accounts a1
+  4  JOIN Accounts a2
+  5  ON
+  6  a1.Balance = a2.Balance
+  7  WHERE a1.AccountID <> a2.AccountID;
+a1.Balance = a2.Balance
+             *
+ERROR at line 6:
+ORA-00904: "A2"."BALANCE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT a1.Account_ID AS Account1_ID, a1.Customer_ID AS Customer1_ID, a1.account_Balance,
+  2  a2.Account_ID AS Account2_ID, a2.Customer_ID AS Customer2ID
+  3  FROM Accounts a1
+  4  JOIN Accounts a2
+  5  ON
+  6  a1.account_Balance = a2.account_Balance
+  7* WHERE a1.Account_ID <> a2.Account_ID
+SQL> /
+
+ACCOUNT1_ID CUSTOMER1_ID ACCOUNT_BALANCE ACCOUNT2_ID CUSTOMER2ID                                                                                                                                        
+----------- ------------ --------------- ----------- -----------                                                                                                                                        
+          3            3            2500           2           2                                                                                                                                        
+          2            2            2500           3           3                                                                                                                                        
+          6            6            5000           5           5                                                                                                                                        
+          5            5            5000           6           6                                                                                                                                        
+
+SQL> SELECT a1.AccountID AS Account1ID, a1.CustomerID AS Customer1ID, a1.AccountCreationDate,
+  2  a2.AccountID AS Account2ID, a2.CustomerID AS Customer2ID
+  3  FROM Accounts a1
+  4  JOIN Accounts a2
+  5  ON
+  6  a1.AccountCreationDate = a2.AccountCreationDate
+  7  WHERE a1.AccountID <> a2.AccountID;
+a1.AccountCreationDate = a2.AccountCreationDate
+                         *
+ERROR at line 6:
+ORA-00904: "A2"."ACCOUNTCREATIONDATE": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT a1.Account_ID AS Account1_ID, a1.Customer_ID AS Customer1_ID, a1.Account_Creation_Date,
+  2  a2.Account_ID AS Account2_ID, a2.Customer_ID AS Customer2_ID
+  3  FROM Accounts a1
+  4  JOIN Accounts a2
+  5  ON
+  6  a1.Account_Creation_Date = a2.Account_Creation_Date
+  7* WHERE a1.Account_ID <> a2.Account_ID
+SQL> /
+
+no rows selected
+
+SQL> spool off
